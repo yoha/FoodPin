@@ -3,37 +3,83 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Restaurant Table View Controller-->
         <scene sceneID="446-Nj-Bxg">
             <objects>
                 <tableViewController id="HTR-y4-VLE" customClass="RestaurantTableViewController" customModule="FoodPin" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ED3-Nu-uCt">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="ED3-Nu-uCt">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="Afr-jd-Trc" style="IBUITableViewCellStyleDefault" id="hfr-dD-e7l">
-                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="80" id="hfr-dD-e7l" customClass="RestaurantTableViewCell" customModule="FoodPin" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="600" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hfr-dD-e7l" id="zKR-vq-PMA">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="79"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Afr-jd-Trc">
-                                            <rect key="frame" x="15" y="0.0" width="570" height="43"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="njV-xZ-qIg">
+                                            <rect key="frame" x="16" y="10" width="576" height="60"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uPb-fh-lqp">
+                                                    <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                                    <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="60" id="2pU-IB-2W1"/>
+                                                        <constraint firstAttribute="height" constant="60" id="DN3-R2-0Up"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="dMt-7W-ZPj">
+                                                    <rect key="frame" x="70" y="0.0" width="506" height="55"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ien-Pb-PaD">
+                                                            <rect key="frame" x="0.0" y="0.0" width="45" height="20"/>
+                                                            <animations/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NA4-V9-467">
+                                                            <rect key="frame" x="0.0" y="21" width="55" height="17"/>
+                                                            <animations/>
+                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gkf-7W-evg">
+                                                            <rect key="frame" x="0.0" y="39" width="30" height="16"/>
+                                                            <animations/>
+                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <animations/>
+                                                </stackView>
+                                            </subviews>
                                             <animations/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        </stackView>
                                     </subviews>
                                     <animations/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="njV-xZ-qIg" secondAttribute="bottom" constant="1.5" id="FmV-Rq-FGj"/>
+                                        <constraint firstItem="njV-xZ-qIg" firstAttribute="leading" secondItem="zKR-vq-PMA" secondAttribute="leadingMargin" constant="8" id="Mf4-21-lZQ"/>
+                                        <constraint firstItem="njV-xZ-qIg" firstAttribute="top" secondItem="zKR-vq-PMA" secondAttribute="topMargin" constant="2" id="cFa-2H-GVG"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="njV-xZ-qIg" secondAttribute="trailing" id="j9k-1G-O4u"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
+                                <connections>
+                                    <outlet property="locationLabel" destination="NA4-V9-467" id="ceL-Ic-Xlz"/>
+                                    <outlet property="nameLabel" destination="ien-Pb-PaD" id="TXH-7a-zVL"/>
+                                    <outlet property="thumbnailImageView" destination="uPb-fh-lqp" id="V8A-N7-eaI"/>
+                                    <outlet property="typeLabel" destination="Gkf-7W-evg" id="xes-hq-z8Y"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
