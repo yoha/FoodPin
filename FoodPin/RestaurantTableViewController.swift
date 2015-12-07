@@ -20,6 +20,8 @@ class RestaurantTableViewController: UITableViewController {
     
     let restaurantTypes = ["Coffee & Tea Shop", "Cafe", "Tea House", "Austrian Causual Drink", "French", "Bakery", "Bakery", "Chocolate", "Cafe", "American Seafood", "American", "American", "Breakfast & Brunch", "Coffee & Tea", "Coffee & Tea", "Latin American", "Spanish", "Spanish", "Spanish", "British", "Thai"]
     
+    var restaurantsVisited = [Bool](count: 21, repeatedValue: false)
+    
     // MARK: - Methods Override
 
     override func viewDidLoad() {
@@ -52,11 +54,22 @@ class RestaurantTableViewController: UITableViewController {
         }
         optionMenu.addAction(callAction)
         
-        let hasVisitedBeforeAction = UIAlertAction(title: "I've been here", style: .Default) { [unowned self] (action: UIAlertAction) -> Void in
-            guard let cell = self.tableView.cellForRowAtIndexPath(indexPath) else { return }
-            cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+        if self.restaurantsVisited[indexPath.row] {
+            let hasNotVisitedBeforeAction = UIAlertAction(title: "I've not been here", style: .Default, handler: { (action: UIAlertAction) -> Void in
+                guard let cell = self.tableView.cellForRowAtIndexPath(indexPath) else { return }
+                cell.accessoryType = UITableViewCellAccessoryType.None
+                self.restaurantsVisited[indexPath.row] = false
+            })
+            optionMenu.addAction(hasNotVisitedBeforeAction)
         }
-        optionMenu.addAction(hasVisitedBeforeAction)
+        else {
+            let hasVisitedBeforeAction = UIAlertAction(title: "I've been here", style: .Default) { [unowned self] (action: UIAlertAction) -> Void in
+                guard let cell = self.tableView.cellForRowAtIndexPath(indexPath) else { return }
+                cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+                self.restaurantsVisited[indexPath.row] = true
+            }
+            optionMenu.addAction(hasVisitedBeforeAction)
+        }
         
         self.presentViewController(optionMenu, animated: true, completion: nil)
         
@@ -84,6 +97,8 @@ class RestaurantTableViewController: UITableViewController {
         cell.nameLabel.text = self.restaurantNames[indexPath.row]
         cell.locationLabel.text = self.restaurantLocations[indexPath.row]
         cell.typeLabel.text = self.restaurantTypes[indexPath.row]
+        
+        cell.accessoryType = self.restaurantsVisited[indexPath.row] ? .Checkmark : .None
 
         return cell
     }
