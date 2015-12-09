@@ -12,13 +12,7 @@ class RestaurantTableViewController: UITableViewController {
     
     // MARK: - Stored Properties
     
-    let restaurantNames = ["Cafe Deadend", "Homei", "Teakha", "Cafe Loisl", "Petite Oyster", "For Kee Restaurant", "Po's Atelier", "Bourke Street Bakery", "Haigh's Chocolate", "Palomino Espresso", "Upstate", "Traif", "Graham Avenue Meats", "Waffle & Wolf", "Five Leaves", "Cafe Lore", "Confessional", "Barrafina", "Donostia", "Royal Oak", "Thai Cafe"]
-    
-    let restaurantImages = ["cafedeadend.jpg", "homei.jpg", "teakha.jpg", "cafeloisl.jpg", "petiteoyster.jpg", "forkeerestaurant.jpg", "posatelier.jpg", "bourkestreetbakery.jpg", "haighschocolate.jpg", "palominoespresso.jpg", "upstate.jpg", "traif.jpg", "grahamavenuemeats.jpg", "wafflewolf.jpg", "fiveleaves.jpg", "cafelore.jpg", "confessional.jpg", "barrafina.jpg", "donostia.jpg", "royaloak.jpg", "thaicafe.jpg"]
-    
-    let restaurantLocations = ["Hong Kong", "Hong Kong", "Hong Kong", "Hong Kong", "Hong Kong", "Hong Kong", "Hong Kong", "Sydney", "Sydney", "Sydney", "New York", "New York", "New York", "New York", "New York", "New York", "New York", "London", "London", "London", "London"]
-    
-    let restaurantTypes = ["Coffee & Tea Shop", "Cafe", "Tea House", "Austrian Causual Drink", "French", "Bakery", "Bakery", "Chocolate", "Cafe", "American Seafood", "American", "American", "Breakfast & Brunch", "Coffee & Tea", "Coffee & Tea", "Latin American", "Spanish", "Spanish", "Spanish", "British", "Thai"]
+    let restaurantModel = RestaurantModel()
     
     var restaurantsVisited = [Bool](count: 21, repeatedValue: false)
     
@@ -79,13 +73,11 @@ class RestaurantTableViewController: UITableViewController {
     // MARK: - Table View Data Source Methods
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return self.restaurantNames.count
+        return self.restaurantModel.restaurantNames.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -93,10 +85,11 @@ class RestaurantTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! RestaurantTableViewCell
 
         // Configure the cell...
-        cell.thumbnailImageView.image = UIImage(named: self.restaurantImages[indexPath.row])
-        cell.nameLabel.text = self.restaurantNames[indexPath.row]
-        cell.locationLabel.text = self.restaurantLocations[indexPath.row]
-        cell.typeLabel.text = self.restaurantTypes[indexPath.row]
+        cell.thumbnailImageView.image = UIImage(named: self.restaurantModel.restaurantImages[indexPath.row])
+        cell.nameLabel.text = self.restaurantModel.restaurantNames[indexPath.row]
+        cell.locationLabel.text = self.restaurantModel.restaurantLocations[indexPath.row]
+        cell.typeLabel.text = self.restaurantModel.restaurantTypes[indexPath.row]
+    
         
         cell.accessoryType = self.restaurantsVisited[indexPath.row] ? .Checkmark : .None
 
