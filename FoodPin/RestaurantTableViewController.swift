@@ -69,6 +69,32 @@ class RestaurantTableViewController: UITableViewController {
         
         self.tableView.deselectRowAtIndexPath(indexPath, animated: false)
     }
+    
+    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        
+        // Social Sharing Button
+        let shareAction = UITableViewRowAction(style: .Default, title: "Share") { (action, indexPath) -> Void in
+            let defaultText = "Just checking in at " + self.restaurantModel.restaurantNames[indexPath.row]
+            guard let imageToShare = UIImage(named: self.restaurantModel.restaurantImages[indexPath.row]) else { return }
+            let activityController = UIActivityViewController(activityItems: [defaultText, imageToShare], applicationActivities: nil)
+            self.presentViewController(activityController, animated: true, completion: nil)
+        }
+        
+        // Delete Button
+        let deleteAction = UITableViewRowAction(style: .Default, title: "Delete") { (action, indexPath) -> Void in
+            // Delete the row from the data source
+            self.restaurantModel.restaurantNames.removeAtIndex(indexPath.row)
+            self.restaurantModel.restaurantLocations.removeAtIndex(indexPath.row)
+            self.restaurantModel.restaurantTypes.removeAtIndex(indexPath.row)
+            self.restaurantModel.restaurantImages.removeAtIndex(indexPath.row)
+            
+            self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+        }
+        
+        shareAction.backgroundColor = UIColor(red: 28.0/255.0, green: 165.0/255.0, blue: 253.0/255.0, alpha: 1.0)
+        
+        return [deleteAction, shareAction]
+    }
 
     // MARK: - Table View Data Source Methods
 
@@ -96,16 +122,16 @@ class RestaurantTableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == UITableViewCellEditingStyle.Delete {
-            self.restaurantModel.restaurantNames.removeAtIndex(indexPath.row)
-            self.restaurantModel.restaurantLocations.removeAtIndex(indexPath.row)
-            self.restaurantModel.restaurantTypes.removeAtIndex(indexPath.row)
-            self.restaurantModel.restaurantImages.removeAtIndex(indexPath.row)
-            self.restaurantsVisited.removeAtIndex(indexPath.row)
-        }
-        self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-    }
+//    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+//        if editingStyle == UITableViewCellEditingStyle.Delete {
+//            self.restaurantModel.restaurantNames.removeAtIndex(indexPath.row)
+//            self.restaurantModel.restaurantLocations.removeAtIndex(indexPath.row)
+//            self.restaurantModel.restaurantTypes.removeAtIndex(indexPath.row)
+//            self.restaurantModel.restaurantImages.removeAtIndex(indexPath.row)
+//            self.restaurantsVisited.removeAtIndex(indexPath.row)
+//        }
+//        self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+//    }
 
     /*
     // Override to support conditional editing of the table view.
