@@ -95,6 +95,17 @@ class RestaurantTableViewController: UITableViewController {
 
         return cell
     }
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            self.restaurantModel.restaurantNames.removeAtIndex(indexPath.row)
+            self.restaurantModel.restaurantLocations.removeAtIndex(indexPath.row)
+            self.restaurantModel.restaurantTypes.removeAtIndex(indexPath.row)
+            self.restaurantModel.restaurantImages.removeAtIndex(indexPath.row)
+            self.restaurantsVisited.removeAtIndex(indexPath.row)
+        }
+        self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+    }
 
     /*
     // Override to support conditional editing of the table view.
