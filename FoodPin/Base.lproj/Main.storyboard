@@ -70,7 +70,7 @@
                                     <outlet property="nameLabel" destination="ien-Pb-PaD" id="TXH-7a-zVL"/>
                                     <outlet property="thumbnailImageView" destination="uPb-fh-lqp" id="V8A-N7-eaI"/>
                                     <outlet property="typeLabel" destination="Gkf-7W-evg" id="xes-hq-z8Y"/>
-                                    <segue destination="JZL-fS-0p4" kind="show" id="Roy-Ef-w8c"/>
+                                    <segue destination="JZL-fS-0p4" kind="show" identifier="showRestaurantDetail" id="Roy-Ef-w8c"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -85,10 +85,10 @@
             </objects>
             <point key="canvasLocation" x="1392" y="587"/>
         </scene>
-        <!--View Controller-->
+        <!--Restaurant Detail View Controller-->
         <scene sceneID="WOG-vt-Xx0">
             <objects>
-                <viewController id="JZL-fS-0p4" sceneMemberID="viewController">
+                <viewController id="JZL-fS-0p4" customClass="RestaurantDetailViewController" customModule="FoodPin" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KiK-Dr-Uh9"/>
                         <viewControllerLayoutGuide type="bottom" id="xXI-UA-w75"/>
@@ -109,6 +109,9 @@
                             <constraint firstItem="xXI-UA-w75" firstAttribute="top" secondItem="XXP-KX-dBZ" secondAttribute="bottom" id="pU7-Td-Bu3"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="restaurantImageView" destination="XXP-KX-dBZ" id="T7V-2O-RCE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lnd-Nd-DX3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

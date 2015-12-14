@@ -12,11 +12,35 @@ class RestaurantTableViewController: UITableViewController {
     
     // MARK: - Stored Properties
     
-    let restaurantModel = RestaurantModel()
+//    let restaurantModel = RestaurantModel()
     
-    var restaurantsVisited = [Bool](count: 21, repeatedValue: false)
+//    var restaurantsVisited = [Bool](count: 21, repeatedValue: false)
     
-    // MARK: - Methods Override
+    var restaurants:[RestaurantModel] = [
+        RestaurantModel(name: "Cafe Deadend", type: "Coffee & Tea Shop", location: "Hong Kong", image: "cafedeadend.jpg"),
+        RestaurantModel(name: "Homei", type: "Cafe", location: "Hong Kong", image: "homei.jpg"),
+        RestaurantModel(name: "Teakha", type: "Tea House", location: "Hong Kong", image: "teakha.jpg"),
+        RestaurantModel(name: "Cafe loisl", type: "Austrian / Causual Drink", location: "Hong Kong", image: "cafeloisl.jpg"),
+        RestaurantModel(name: "Petite Oyster", type: "French", location: "Hong Kong", image: "petiteoyster.jpg"),
+        RestaurantModel(name: "For Kee Restaurant", type: "Bakery", location: "Hong Kong", image: "forkeerestaurant.jpg"),
+        RestaurantModel(name: "Po's Atelier", type: "Bakery", location: "Hong Kong", image: "posatelier.jpg"),
+        RestaurantModel(name: "Bourke Street Backery", type: "Chocolate", location: "Sydney", image: "bourkestreetbakery.jpg"),
+        RestaurantModel(name: "Haigh's Chocolate", type: "Cafe", location: "Sydney", image: "haighschocolate.jpg"),
+        RestaurantModel(name: "Palomino Espresso", type: "American / Seafood", location: "Sydney", image: "palominoespresso.jpg"),
+        RestaurantModel(name: "Upstate", type: "American", location: "New York", image: "upstate.jpg"),
+        RestaurantModel(name: "Traif", type: "American", location: "New York", image: "traif.jpg"),
+        RestaurantModel(name: "Graham Avenue Meats", type: "Breakfast & Brunch", location: "New York", image: "grahamavenuemeats.jpg"),
+        RestaurantModel(name: "Waffle & Wolf", type: "Coffee & Tea", location: "New York", image: "wafflewolf.jpg"),
+        RestaurantModel(name: "Five Leaves", type: "Coffee & Tea", location: "New York", image: "fiveleaves.jpg"),
+        RestaurantModel(name: "Cafe Lore", type: "Latin American", location: "New York", image: "cafelore.jpg"),
+        RestaurantModel(name: "Confessional", type: "Spanish", location: "New York", image: "confessional.jpg"),
+        RestaurantModel(name: "Barrafina", type: "Spanish", location: "London", image: "barrafina.jpg"),
+        RestaurantModel(name: "Donostia", type: "Spanish", location: "London", image: "donostia.jpg"),
+        RestaurantModel(name: "Royal Oak", type: "British", location: "London", image: "royaloak.jpg"),
+        RestaurantModel(name: "Thai Cafe", type: "Thai", location: "London", image: "thaicafe.jpg")
+    ]
+    
+    // MARK: - UIViewController Methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,49 +57,58 @@ class RestaurantTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showRestaurantDetail" {
+            guard let indexPath = self.tableView.indexPathForSelectedRow else { return }
+            let destinationViewController = segue.destinationViewController as! RestaurantDetailViewController
+            destinationViewController.restaurant = self.restaurants[indexPath.row]
+        }
+    }
+    
     // MARK: - Table View Delegate Methods
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let optionMenu = UIAlertController(title: nil, message: "What do you want to do?", preferredStyle: UIAlertControllerStyle.ActionSheet)
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
-        optionMenu.addAction(cancelAction)
-        
-        let callAction = UIAlertAction(title: "Call 123-000-\(indexPath.row)", style: .Default) { [unowned self] (action: UIAlertAction) -> Void in
-            let alertMessage = UIAlertController(title: "Service Unavailable", message: "Sorry, the call feature is not available yet. Please retry later.", preferredStyle: .Alert)
-            alertMessage.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-            self.presentViewController(alertMessage, animated: true, completion: nil)
-        }
-        optionMenu.addAction(callAction)
-        
-        if self.restaurantsVisited[indexPath.row] {
-            let hasNotVisitedBeforeAction = UIAlertAction(title: "I've not been here", style: .Default, handler: { (action: UIAlertAction) -> Void in
-                guard let cell = self.tableView.cellForRowAtIndexPath(indexPath) else { return }
-                cell.accessoryType = UITableViewCellAccessoryType.None
-                self.restaurantsVisited[indexPath.row] = false
-            })
-            optionMenu.addAction(hasNotVisitedBeforeAction)
-        }
-        else {
-            let hasVisitedBeforeAction = UIAlertAction(title: "I've been here", style: .Default) { [unowned self] (action: UIAlertAction) -> Void in
-                guard let cell = self.tableView.cellForRowAtIndexPath(indexPath) else { return }
-                cell.accessoryType = UITableViewCellAccessoryType.Checkmark
-                self.restaurantsVisited[indexPath.row] = true
-            }
-            optionMenu.addAction(hasVisitedBeforeAction)
-        }
-        
-        self.presentViewController(optionMenu, animated: true, completion: nil)
-        
-        self.tableView.deselectRowAtIndexPath(indexPath, animated: false)
-    }
+//    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+//        let optionMenu = UIAlertController(title: nil, message: "What do you want to do?", preferredStyle: UIAlertControllerStyle.ActionSheet)
+//        
+//        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+//        optionMenu.addAction(cancelAction)
+//        
+//        let callAction = UIAlertAction(title: "Call 123-000-\(indexPath.row)", style: .Default) { [unowned self] (action: UIAlertAction) -> Void in
+//            let alertMessage = UIAlertController(title: "Service Unavailable", message: "Sorry, the call feature is not available yet. Please retry later.", preferredStyle: .Alert)
+//            alertMessage.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+//            self.presentViewController(alertMessage, animated: true, completion: nil)
+//        }
+//        optionMenu.addAction(callAction)
+//        
+//        if self.restaurantsVisited[indexPath.row] {
+//            let hasNotVisitedBeforeAction = UIAlertAction(title: "I've not been here", style: .Default, handler: { (action: UIAlertAction) -> Void in
+//                guard let cell = self.tableView.cellForRowAtIndexPath(indexPath) else { return }
+//                cell.accessoryType = UITableViewCellAccessoryType.None
+//                self.restaurants[indexPath.row].isVisited = false
+//                self.restaurantsVisited[indexPath.row] = false
+//            })
+//            optionMenu.addAction(hasNotVisitedBeforeAction)
+//        }
+//        else {
+//            let hasVisitedBeforeAction = UIAlertAction(title: "I've been here", style: .Default) { [unowned self] (action: UIAlertAction) -> Void in
+//                guard let cell = self.tableView.cellForRowAtIndexPath(indexPath) else { return }
+//                cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+//                self.restaurants[indexPAth.row].isVisited = true
+//            }
+//            optionMenu.addAction(hasVisitedBeforeAction)
+//        }
+//        
+//        self.presentViewController(optionMenu, animated: true, completion: nil)
+//        
+//        self.tableView.deselectRowAtIndexPath(indexPath, animated: false)
+//    }
     
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         
         // Social Sharing Button
         let shareAction = UITableViewRowAction(style: .Default, title: "Share") { (action, indexPath) -> Void in
-            let defaultText = "Just checking in at " + self.restaurantModel.restaurantNames[indexPath.row]
-            guard let imageToShare = UIImage(named: self.restaurantModel.restaurantImages[indexPath.row]) else { return }
+            let defaultText = "Just checking in at " + self.restaurants[indexPath.row].name
+            guard let imageToShare = UIImage(named: self.restaurants[indexPath.row].image) else { return }
             let activityController = UIActivityViewController(activityItems: [defaultText, imageToShare], applicationActivities: nil)
             self.presentViewController(activityController, animated: true, completion: nil)
         }
@@ -83,11 +116,8 @@ class RestaurantTableViewController: UITableViewController {
         // Delete Button
         let deleteAction = UITableViewRowAction(style: .Default, title: "Delete") { (action, indexPath) -> Void in
             // Delete the row from the data source
-            self.restaurantModel.restaurantNames.removeAtIndex(indexPath.row)
-            self.restaurantModel.restaurantLocations.removeAtIndex(indexPath.row)
-            self.restaurantModel.restaurantTypes.removeAtIndex(indexPath.row)
-            self.restaurantModel.restaurantImages.removeAtIndex(indexPath.row)
-            
+            self.restaurants.removeAtIndex(indexPath.row)
+    
             self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         }
         
@@ -103,7 +133,7 @@ class RestaurantTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.restaurantModel.restaurantNames.count
+        return self.restaurants.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -111,27 +141,22 @@ class RestaurantTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! RestaurantTableViewCell
 
         // Configure the cell...
-        cell.thumbnailImageView.image = UIImage(named: self.restaurantModel.restaurantImages[indexPath.row])
-        cell.nameLabel.text = self.restaurantModel.restaurantNames[indexPath.row]
-        cell.locationLabel.text = self.restaurantModel.restaurantLocations[indexPath.row]
-        cell.typeLabel.text = self.restaurantModel.restaurantTypes[indexPath.row]
-    
-        
-        cell.accessoryType = self.restaurantsVisited[indexPath.row] ? .Checkmark : .None
+        cell.thumbnailImageView.image = UIImage(named: self.restaurants[indexPath.row].image)
+        cell.nameLabel.text = self.restaurants[indexPath.row].name
+        cell.locationLabel.text = self.restaurants[indexPath.row].location
+        cell.typeLabel.text = self.restaurants[indexPath.row].type
+            
+        cell.accessoryType = self.restaurants[indexPath.row].isVisited ? .Checkmark : .None
 
         return cell
     }
     
-//    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-//        if editingStyle == UITableViewCellEditingStyle.Delete {
-//            self.restaurantModel.restaurantNames.removeAtIndex(indexPath.row)
-//            self.restaurantModel.restaurantLocations.removeAtIndex(indexPath.row)
-//            self.restaurantModel.restaurantTypes.removeAtIndex(indexPath.row)
-//            self.restaurantModel.restaurantImages.removeAtIndex(indexPath.row)
-//            self.restaurantsVisited.removeAtIndex(indexPath.row)
-//        }
-//        self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-//    }
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            self.restaurants.removeAtIndex(indexPath.row)
+        }
+        self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+    }
 
     /*
     // Override to support conditional editing of the table view.
