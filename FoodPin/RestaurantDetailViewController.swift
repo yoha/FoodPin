@@ -13,9 +13,7 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
     // MARK: - IBOutlet Properties
     
     @IBOutlet var restaurantImageView: UIImageView!
-    @IBOutlet var nameLabel: UILabel!
-    @IBOutlet var typeLabel: UILabel!
-    @IBOutlet var locationLabel: UILabel!
+    @IBOutlet var tableView: UITableView!
     
     // MARK: - Stored Properties
     
@@ -28,9 +26,11 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
 
         // Do any additional setup after loading the view.
         self.restaurantImageView.image = UIImage(named: self.restaurant.image)
-//        self.nameLabel.text = self.restaurant.name
-//        self.typeLabel.text = self.restaurant.type
-//        self.locationLabel.text = self.restaurant.location
+        
+        self.tableView.backgroundColor = UIColor(red: 0.0/255.0, green: 240.0/255.0, blue: 240.0/255.0, alpha: 0.2)
+        self.tableView.tableFooterView = UIView(frame: CGRectZero)
+        self.tableView.separatorColor = UIColor(red: 240.0/255.0, green: 240.0/255.0, blue: 240.0/255.0, alpha: 0.8)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -65,6 +65,7 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
             cell.fieldLabel.text = ""
             cell.valueLabel.text = ""
         }
+        cell.backgroundColor = UIColor.clearColor()
         
         return cell
     }
