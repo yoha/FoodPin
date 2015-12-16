@@ -46,7 +46,7 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
     // MARK:- UITableViewDataSource Methods
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 5
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -64,6 +64,9 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
             cell.fieldLabel.text = "Location"
             cell.valueLabel.text = self.restaurant.location
         case 3:
+            cell.fieldLabel.text = "Phone"
+            cell.valueLabel.text = self.restaurant.phone
+        case 4:
             cell.fieldLabel.text = "Been here"
             cell.valueLabel.text = self.restaurant.isVisited ? "Yes, I've been here before" : "No"
         default:

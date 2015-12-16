@@ -17,27 +17,27 @@ class RestaurantTableViewController: UITableViewController {
 //    var restaurantsVisited = [Bool](count: 21, repeatedValue: false)
     
     var restaurants:[RestaurantModel] = [
-        RestaurantModel(name: "Cafe Deadend", type: "Coffee & Tea Shop", location: "Hong Kong", image: "cafedeadend.jpg"),
-        RestaurantModel(name: "Homei", type: "Cafe", location: "Hong Kong", image: "homei.jpg"),
-        RestaurantModel(name: "Teakha", type: "Tea House", location: "Hong Kong", image: "teakha.jpg"),
-        RestaurantModel(name: "Cafe loisl", type: "Austrian / Causual Drink", location: "Hong Kong", image: "cafeloisl.jpg"),
-        RestaurantModel(name: "Petite Oyster", type: "French", location: "Hong Kong", image: "petiteoyster.jpg"),
-        RestaurantModel(name: "For Kee Restaurant", type: "Bakery", location: "Hong Kong", image: "forkeerestaurant.jpg"),
-        RestaurantModel(name: "Po's Atelier", type: "Bakery", location: "Hong Kong", image: "posatelier.jpg"),
-        RestaurantModel(name: "Bourke Street Backery", type: "Chocolate", location: "Sydney", image: "bourkestreetbakery.jpg"),
-        RestaurantModel(name: "Haigh's Chocolate", type: "Cafe", location: "Sydney", image: "haighschocolate.jpg"),
-        RestaurantModel(name: "Palomino Espresso", type: "American / Seafood", location: "Sydney", image: "palominoespresso.jpg"),
-        RestaurantModel(name: "Upstate", type: "American", location: "New York", image: "upstate.jpg"),
-        RestaurantModel(name: "Traif", type: "American", location: "New York", image: "traif.jpg"),
-        RestaurantModel(name: "Graham Avenue Meats", type: "Breakfast & Brunch", location: "New York", image: "grahamavenuemeats.jpg"),
-        RestaurantModel(name: "Waffle & Wolf", type: "Coffee & Tea", location: "New York", image: "wafflewolf.jpg"),
-        RestaurantModel(name: "Five Leaves", type: "Coffee & Tea", location: "New York", image: "fiveleaves.jpg"),
-        RestaurantModel(name: "Cafe Lore", type: "Latin American", location: "New York", image: "cafelore.jpg"),
-        RestaurantModel(name: "Confessional", type: "Spanish", location: "New York", image: "confessional.jpg"),
-        RestaurantModel(name: "Barrafina", type: "Spanish", location: "London", image: "barrafina.jpg"),
-        RestaurantModel(name: "Donostia", type: "Spanish", location: "London", image: "donostia.jpg"),
-        RestaurantModel(name: "Royal Oak", type: "British", location: "London", image: "royaloak.jpg"),
-        RestaurantModel(name: "Thai Cafe", type: "Thai", location: "London", image: "thaicafe.jpg")
+        RestaurantModel(name: "Cafe Deadend", type: "Coffee & Tea Shop", location: "Hong Kong", phone: "123-456-7890", image: "cafedeadend.jpg"),
+        RestaurantModel(name: "Homei", type: "Cafe", location: "Hong Kong", phone: "123-456-7890", image: "homei.jpg"),
+        RestaurantModel(name: "Teakha", type: "Tea House", location: "Hong Kong", phone: "123-456-7890", image: "teakha.jpg"),
+        RestaurantModel(name: "Cafe loisl", type: "Austrian / Causual Drink", location: "Hong Kong", phone: "123-456-7890", image: "cafeloisl.jpg"),
+        RestaurantModel(name: "Petite Oyster", type: "French", location: "Hong Kong", phone: "123-456-7890", image: "petiteoyster.jpg"),
+        RestaurantModel(name: "For Kee Restaurant", type: "Bakery", location: "Hong Kong", phone: "123-456-7890", image: "forkeerestaurant.jpg"),
+        RestaurantModel(name: "Po's Atelier", type: "Bakery", location: "Hong Kong", phone: "123-456-7890", image: "posatelier.jpg"),
+        RestaurantModel(name: "Bourke Street Backery", type: "Chocolate", location: "Sydney", phone: "123-456-7890", image: "bourkestreetbakery.jpg"),
+        RestaurantModel(name: "Haigh's Chocolate", type: "Cafe", location: "Sydney", phone: "123-456-7890", image: "haighschocolate.jpg"),
+        RestaurantModel(name: "Palomino Espresso", type: "American / Seafood", location: "Sydney", phone: "123-456-7890", image: "palominoespresso.jpg"),
+        RestaurantModel(name: "Upstate", type: "American", location: "New York", phone: "123-456-7890", image: "upstate.jpg"),
+        RestaurantModel(name: "Traif", type: "American", location: "New York", phone: "123-456-7890", image: "traif.jpg"),
+        RestaurantModel(name: "Graham Avenue Meats", type: "Breakfast & Brunch", location: "New York", phone: "123-456-7890", image: "grahamavenuemeats.jpg"),
+        RestaurantModel(name: "Waffle & Wolf", type: "Coffee & Tea", location: "New York", phone: "123-456-7890", image: "wafflewolf.jpg"),
+        RestaurantModel(name: "Five Leaves", type: "Coffee & Tea", location: "New York", phone: "123-456-7890", image: "fiveleaves.jpg"),
+        RestaurantModel(name: "Cafe Lore", type: "Latin American", location: "New York", phone: "123-456-7890", image: "cafelore.jpg"),
+        RestaurantModel(name: "Confessional", type: "Spanish", location: "New York", phone: "123-456-7890", image: "confessional.jpg"),
+        RestaurantModel(name: "Barrafina", type: "Spanish", location: "London", phone: "123-456-7890", image: "barrafina.jpg"),
+        RestaurantModel(name: "Donostia", type: "Spanish", location: "London", phone: "123-456-7890", image: "donostia.jpg"),
+        RestaurantModel(name: "Royal Oak", type: "British", location: "London", phone: "123-456-7890", image: "royaloak.jpg"),
+        RestaurantModel(name: "Thai Cafe", type: "Thai", location: "London", phone: "123-456-7890", image: "thaicafe.jpg")
     ]
     
     // MARK: - UIViewController Methods
