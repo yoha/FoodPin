@@ -14,11 +14,14 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
     
     @IBOutlet var restaurantImageView: UIImageView!
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var ratingButton: UIButton!
     
     // MARK: - IBAction Properties
     
     @IBAction func closeReview(segue: UIStoryboardSegue) {
-        
+        guard let reviewViewController = segue.sourceViewController as? ReviewViewController else { return }
+        guard let rating = reviewViewController.rating else { return }
+        self.restaurant.rating = rating
     }
     
     // MARK: - Stored Properties
@@ -45,6 +48,8 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
         super.viewWillAppear(true)
         self.navigationController?.hidesBarsOnSwipe = false
         self.navigationController?.setNavigationBarHidden(false, animated: true)
+        
+        self.ratingButton.setImage(UIImage(named: self.restaurant.rating), forState: UIControlState.Normal)
     }
 
     override func didReceiveMemoryWarning() {

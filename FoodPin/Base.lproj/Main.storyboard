@@ -183,6 +183,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="ratingButton" destination="iBr-4o-Btb" id="ipg-df-cum"/>
                         <outlet property="restaurantImageView" destination="wST-fl-b1D" id="aF4-MN-f9p"/>
                         <outlet property="tableView" destination="UTz-PI-QKj" id="STq-pu-L2l"/>
                     </connections>
@@ -215,7 +216,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="jq2-La-gEW">
                                 <rect key="frame" x="185" y="350" width="230" height="70"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ABT-BP-4G3">
+                                    <button opaque="NO" tag="50" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ABT-BP-4G3">
                                         <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
                                         <color key="backgroundColor" red="0.96078437569999997" green="0.39607846740000002" blue="0.1764705926" alpha="1" colorSpace="deviceRGB"/>
                                         <constraints>
@@ -229,8 +230,11 @@
                                                 <integer key="value" value="35"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="ratingSelected:" destination="T1W-il-Zy4" eventType="touchUpInside" id="fg6-Rx-Pml"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rjD-ML-amP">
+                                    <button opaque="NO" tag="75" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rjD-ML-amP">
                                         <rect key="frame" x="80" y="0.0" width="70" height="70"/>
                                         <color key="backgroundColor" red="0.96078437569999997" green="0.39607846740000002" blue="0.1764705926" alpha="1" colorSpace="deviceRGB"/>
                                         <constraints>
@@ -244,8 +248,11 @@
                                                 <integer key="value" value="35"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="ratingSelected:" destination="T1W-il-Zy4" eventType="touchUpInside" id="dLR-sV-vJq"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iYK-A9-1ck">
+                                    <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iYK-A9-1ck">
                                         <rect key="frame" x="160" y="0.0" width="70" height="70"/>
                                         <color key="backgroundColor" red="0.96078437569999997" green="0.39607846740000002" blue="0.1764705926" alpha="1" colorSpace="deviceRGB"/>
                                         <constraints>
@@ -259,6 +266,9 @@
                                                 <integer key="value" value="35"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="ratingSelected:" destination="T1W-il-Zy4" eventType="touchUpInside" id="QcX-o9-Maf"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -271,7 +281,7 @@
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" image="close"/>
                                 <connections>
-                                    <segue destination="6x0-g7-i1C" kind="unwind" unwindAction="closeReview:" id="LJT-Uh-cYm"/>
+                                    <segue destination="6x0-g7-i1C" kind="unwind" identifier="unwindToRestaurantDetailVC" unwindAction="closeReview:" id="LJT-Uh-cYm"/>
                                 </connections>
                             </button>
                         </subviews>

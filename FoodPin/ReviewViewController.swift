@@ -15,6 +15,26 @@ class ReviewViewController: UIViewController {
     @IBOutlet var backgroundImageView: UIImageView!
     @IBOutlet var ratingStackView: UIStackView!
     
+    // MARK: - IBAction Properties
+    
+    @IBAction func ratingSelected(sender: UIButton) {
+        switch (sender.tag) {
+        case 50:
+            rating = "dislike"
+        case 75:
+            rating = "good"
+        case 100:
+            rating = "great"
+        default:
+            break
+        }
+        self.performSegueWithIdentifier("unwindToRestaurantDetailVC", sender: sender)
+    }
+    
+    // MARK: - Stored Properties
+    
+    var rating: String?
+    
     // MARK: - UIViewController Methods
 
     override func viewDidLoad() {
