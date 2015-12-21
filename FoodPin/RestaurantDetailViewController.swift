@@ -15,6 +15,12 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
     @IBOutlet var restaurantImageView: UIImageView!
     @IBOutlet var tableView: UITableView!
     
+    // MARK: - IBAction Properties
+    
+    @IBAction func closeReview(segue: UIStoryboardSegue) {
+        
+    }
+    
     // MARK: - Stored Properties
     
     var restaurant: RestaurantModel!
