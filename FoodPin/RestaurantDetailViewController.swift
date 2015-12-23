@@ -57,6 +57,13 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
         // Dispose of any resources that can be recreated.
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showMap" {
+            let destinationViewController = segue.destinationViewController as! MapViewController
+            destinationViewController.restaurant = self.restaurant
+        }
+    }
+    
     // MARK:- UITableViewDataSource Methods
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
