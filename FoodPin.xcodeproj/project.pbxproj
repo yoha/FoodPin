@@ -15,6 +15,7 @@
 		6592EC711C0F34BC00CF975D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6592EC701C0F34BC00CF975D /* Assets.xcassets */; };
 		6592EC741C0F34BC00CF975D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6592EC721C0F34BC00CF975D /* LaunchScreen.storyboard */; };
 		659E4FC11C27F0000067A56F /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659E4FC01C27F0000067A56F /* ReviewViewController.swift */; };
+		65C39C3B1C2AE5D8006C18CE /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C39C3A1C2AE5D8006C18CE /* MapKit.framework */; };
 		65C861211C0F383000710A2A /* RestaurantTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C861201C0F383000710A2A /* RestaurantTableViewController.swift */; };
 		65F158731C18363300FDF293 /* RestaurantModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F158721C18363300FDF293 /* RestaurantModel.swift */; };
 /* End PBXBuildFile section */
@@ -30,6 +31,7 @@
 		6592EC731C0F34BC00CF975D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6592EC751C0F34BC00CF975D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		659E4FC01C27F0000067A56F /* ReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
+		65C39C3A1C2AE5D8006C18CE /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		65C861201C0F383000710A2A /* RestaurantTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewController.swift; sourceTree = "<group>"; };
 		65F158721C18363300FDF293 /* RestaurantModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -39,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65C39C3B1C2AE5D8006C18CE /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -48,6 +51,7 @@
 		6592EC5D1C0F34BB00CF975D = {
 			isa = PBXGroup;
 			children = (
+				65C39C3A1C2AE5D8006C18CE /* MapKit.framework */,
 				6592EC681C0F34BC00CF975D /* FoodPin */,
 				6592EC671C0F34BB00CF975D /* Products */,
 			);
@@ -112,6 +116,11 @@
 					6592EC651C0F34BB00CF975D = {
 						CreatedOnToolsVersion = 7.1.1;
 						DevelopmentTeam = 4Z5JKF2M6S;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};

@@ -171,13 +171,28 @@
                                     <segue destination="T1W-il-Zy4" kind="presentation" identifier="showReview" id="ivD-rb-yyC"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uai-CH-10g">
+                                <rect key="frame" x="540" y="120" width="40" height="40"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="Jd7-PT-tFO"/>
+                                    <constraint firstAttribute="height" constant="40" id="j03-K3-lR8"/>
+                                </constraints>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" image="map"/>
+                                <connections>
+                                    <segue destination="ilA-9I-5gB" kind="show" identifier="showMap" id="gw9-tj-YiK"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="uai-CH-10g" secondAttribute="trailing" id="64R-NM-K7l"/>
                             <constraint firstItem="iBr-4o-Btb" firstAttribute="top" secondItem="KiK-Dr-Uh9" secondAttribute="bottom" constant="8" id="GAb-QK-vbp"/>
                             <constraint firstItem="UTz-PI-QKj" firstAttribute="leading" secondItem="hJW-JA-HXa" secondAttribute="leadingMargin" constant="-20" id="NJg-Lr-EiM"/>
                             <constraint firstItem="iBr-4o-Btb" firstAttribute="trailing" secondItem="hJW-JA-HXa" secondAttribute="trailingMargin" id="Pd8-VU-UNc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="UTz-PI-QKj" secondAttribute="trailing" constant="-20" id="WuM-3w-CjE"/>
+                            <constraint firstItem="uai-CH-10g" firstAttribute="top" secondItem="iBr-4o-Btb" secondAttribute="bottom" constant="8" id="byj-xs-Z4I"/>
                             <constraint firstItem="xXI-UA-w75" firstAttribute="top" secondItem="UTz-PI-QKj" secondAttribute="bottom" id="kcN-VS-1ao"/>
                             <constraint firstItem="UTz-PI-QKj" firstAttribute="top" secondItem="hJW-JA-HXa" secondAttribute="topMargin" id="s4G-Az-f2O"/>
                         </constraints>
@@ -191,6 +206,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lnd-Nd-DX3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2189" y="587"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="y99-gU-DId">
+            <objects>
+                <viewController id="ilA-9I-5gB" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ed2-Xo-dsy"/>
+                        <viewControllerLayoutGuide type="bottom" id="4xO-GW-Fd5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="h2z-Fi-Wa4">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="MFo-Mz-6i2">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="MFo-Mz-6i2" firstAttribute="leading" secondItem="h2z-Fi-Wa4" secondAttribute="leading" id="4Af-bF-dKN"/>
+                            <constraint firstItem="MFo-Mz-6i2" firstAttribute="bottom" secondItem="4xO-GW-Fd5" secondAttribute="top" id="4yn-dj-EOb"/>
+                            <constraint firstAttribute="trailing" secondItem="MFo-Mz-6i2" secondAttribute="trailing" id="BdL-D7-9S4"/>
+                            <constraint firstItem="MFo-Mz-6i2" firstAttribute="top" secondItem="h2z-Fi-Wa4" secondAttribute="top" id="INf-7P-qfH"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9LZ-NA-4YK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2189" y="1337"/>
         </scene>
         <!--Review View Controller-->
         <scene sceneID="22q-YO-xah">
@@ -348,6 +392,7 @@
         <image name="dislike" width="84" height="84"/>
         <image name="good" width="256" height="256"/>
         <image name="great" width="256" height="256"/>
+        <image name="map" width="48" height="48"/>
         <image name="rating" width="256" height="256"/>
     </resources>
 </document>
