@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, MKMapViewDelegate {
     
     // MARK: - IBOutlet Properties
     
@@ -23,6 +23,8 @@ class MapViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.mapview.delegate = self
 
         // Convert address to coordinate and annotate it on the map
         let geoCoder = CLGeocoder()
@@ -50,12 +52,47 @@ class MapViewController: UIViewController {
             // Display the annotation
             self.mapview.showAnnotations([annotation], animated: true)
             self.mapview.selectAnnotation(annotation, animated: true)
+            
         }
+        
+        // Display traffic, compass, & scale info
+        self.mapview.showsTraffic = true
+        self.mapview.showsCompass = true
+        self.mapview.showsScale = true
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: - MKMapView Delegate Methods
+    
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+        let pinIdentifier = "MyPin"
+        
+        // We want the placemark's annotation object not user's current location's annotation object
+        if annotation.isKindOfClass(MKUserLocation) {
+            return nil
+        }
+        
+        // Reuse the annotation if possible
+        var annotationView = self.mapview.dequeueReusableAnnotationViewWithIdentifier(pinIdentifier) as? MKPinAnnotationView
+        
+        // Otherwise make a new one
+        if annotationView == nil {
+            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: pinIdentifier)
+            annotationView?.canShowCallout = true
+        }
+        
+        let leftIconView = UIImageView(frame: CGRectMake(0.0, 0.0, 53.0, 53.0))
+        leftIconView.image = UIImage(named: self.restaurant.image)
+        annotationView?.leftCalloutAccessoryView = leftIconView
+        
+        // Change the pin color
+        annotationView?.pinTintColor = UIColor.blackColor()
+
+        return annotationView
     }
     
 
