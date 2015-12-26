@@ -80,7 +80,13 @@
                             <outlet property="delegate" destination="HTR-y4-VLE" id="8jB-Y6-6C8"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Food Pin" id="hRN-X1-eIb"/>
+                    <navigationItem key="navigationItem" title="Food Pin" id="hRN-X1-eIb">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="016-Qt-gaH">
+                            <connections>
+                                <segue destination="IvX-t0-Gtf" kind="presentation" identifier="addRestaurant" id="OU1-x2-r2y"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QYb-pH-LEm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -379,9 +385,16 @@
                             <outlet property="delegate" destination="48x-TX-BA8" id="xeG-Nl-VOJ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="New Restaurant" id="2xv-Ok-16c"/>
+                    <navigationItem key="navigationItem" title="New Restaurant" id="2xv-Ok-16c">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="NZe-KS-X2F">
+                            <connections>
+                                <segue destination="Em4-5b-Bh3" kind="unwind" unwindAction="unwindToHomeScreen:" id="yGU-th-Jl1"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jLa-Z4-EeP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Em4-5b-Bh3" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2204" y="1342"/>
         </scene>

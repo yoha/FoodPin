@@ -43,6 +43,12 @@ class RestaurantTableViewController: UITableViewController {
         RestaurantModel(name: "Thai Cafe", type: "Thai", location: "22 Charlwood Street London SW1V 2DY Pimlico", phoneNumber: "432-344050", image: "thaicafe.jpg")
     ]
     
+    // MARK: - IBAction Properties
+    
+    @IBAction func unwindToHomeScreen(segue: UIStoryboardSegue) {
+        
+    }
+    
     // MARK: - UIViewController Methods
 
     override func viewDidLoad() {
