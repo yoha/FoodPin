@@ -232,17 +232,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photoalbum" translatesAutoresizingMaskIntoConstraints="NO" id="Znl-kh-lga">
-                                                    <rect key="frame" x="236" y="61" width="128" height="128"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="128" id="3Q5-P7-T4c"/>
-                                                    </constraints>
+                                                    <rect key="frame" x="258" y="83" width="84" height="84"/>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstItem="Znl-kh-lga" firstAttribute="centerX" secondItem="1gn-ve-xEq" secondAttribute="centerX" id="GVA-aO-kCg"/>
                                                 <constraint firstItem="Znl-kh-lga" firstAttribute="centerY" secondItem="1gn-ve-xEq" secondAttribute="centerY" id="Wgj-VE-14k"/>
-                                                <constraint firstItem="Znl-kh-lga" firstAttribute="top" secondItem="1gn-ve-xEq" secondAttribute="topMargin" constant="53" id="lR2-Ad-8ZT"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -340,25 +336,33 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="71"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aap-6Z-o6j">
+                                                <button opaque="NO" alpha="0.10000000000000001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aap-6Z-o6j">
                                                     <rect key="frame" x="15" y="33" width="60" height="30"/>
-                                                    <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="60" id="aNa-Wd-UZy"/>
                                                     </constraints>
+                                                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <state key="normal" title="YES">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="toggleBeenHereButtonDidSelect:" destination="48x-TX-BA8" eventType="touchUpInside" id="mby-Ik-AN4"/>
+                                                    </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ew7-Jy-tZF">
+                                                <button opaque="NO" alpha="0.10000000000000001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ew7-Jy-tZF">
                                                     <rect key="frame" x="91" y="33" width="60" height="30"/>
-                                                    <color key="backgroundColor" red="0.23921568630000001" green="0.25490196079999999" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="60" id="iaM-K5-x72"/>
                                                     </constraints>
+                                                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <state key="normal" title="NO">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="toggleBeenHereButtonDidSelect:" destination="48x-TX-BA8" eventType="touchUpInside" id="m9w-Ug-zLL"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HAVE YOU BEEN HERE ?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xlc-Fy-STX">
                                                     <rect key="frame" x="15" y="8" width="184" height="22"/>
@@ -391,7 +395,20 @@
                                 <segue destination="Em4-5b-Bh3" kind="unwind" unwindAction="unwindToHomeScreen:" id="yGU-th-Jl1"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="582-4S-ZR2">
+                            <connections>
+                                <action selector="saveButtonDidTouch:" destination="48x-TX-BA8" id="3f9-2P-3ji"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="imageView" destination="Znl-kh-lga" id="ZSM-hE-S3t"/>
+                        <outlet property="noButton" destination="ew7-Jy-tZF" id="OMZ-cX-rfs"/>
+                        <outlet property="restaurantLocationTextField" destination="xl2-h0-hRK" id="0Sl-xg-a0P"/>
+                        <outlet property="restaurantNameTextField" destination="oaD-TF-pe8" id="9p5-l1-jpw"/>
+                        <outlet property="restaurantTypeTextField" destination="vuK-5d-WaL" id="LME-Ei-7tN"/>
+                        <outlet property="yesButton" destination="aap-6Z-o6j" id="eER-A0-Uhq"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jLa-Z4-EeP" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Em4-5b-Bh3" userLabel="Exit" sceneMemberID="exit"/>

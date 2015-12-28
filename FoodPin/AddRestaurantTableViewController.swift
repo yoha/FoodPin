@@ -8,7 +8,68 @@
 
 import UIKit
 
-class AddRestaurantTableViewController: UITableViewController {
+class AddRestaurantTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    // MARK: - IBOutlet Methods
+    
+    @IBOutlet var imageView: UIImageView!
+    @IBOutlet var restaurantNameTextField: UITextField!
+    @IBOutlet var restaurantTypeTextField: UITextField!
+    @IBOutlet var restaurantLocationTextField: UITextField!
+    @IBOutlet var yesButton: UIButton!
+    @IBOutlet var noButton: UIButton!
+    
+    // MARK: - IBAction Methods
+    
+    @IBAction func saveButtonDidTouch(sender: UIBarButtonItem) {
+        guard self.restaurantNameTextField.text?.characters.count > 0 &&
+            self.restaurantTypeTextField.text?.characters.count > 0 &&
+            self.restaurantLocationTextField.text?.characters.count > 0 else {
+                let alertController = UIAlertController(title: "Oops", message: "We can't proceed because one of the fields is blank. Please note that all fields are required", preferredStyle: UIAlertControllerStyle.Alert)
+                alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+            
+                self.presentViewController(alertController, animated: true, completion: nil)
+                return
+        }
+        
+        print("Restaurant name: \(self.restaurantNameTextField.text!)")
+        print("Restaurant type: \(self.restaurantTypeTextField.text!)")
+        print("Restaurant location: \(self.restaurantLocationTextField.text!)")
+        
+        yesButton.alpha == 1.0 ? print("User has been here before") : print("User has not been here before")
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+//    @IBAction func yesButtonDidTouch(sender: UIButton) {
+//        self.yesButton.alpha = 1.0
+//        self.yesButton.backgroundColor = UIColor.redColor()
+//        self.noButton.backgroundColor = UIColor.blackColor()
+//        self.noButton.alpha = 0.1
+//    }
+    
+    
+//    @IBAction func noButtonDidTouch(sender: UIButton) {
+//        self.noButton.alpha = 1.0
+//        self.noButton.backgroundColor = UIColor.redColor()
+//        self.yesButton.backgroundColor = UIColor.blackColor()
+//        self.yesButton.alpha = 0.1
+//    }
+    
+    @IBAction func toggleBeenHereButtonDidSelect(sender: UIButton) {
+        if sender.titleLabel?.text == "YES" {
+            self.yesButton.alpha = 1.0
+            self.yesButton.backgroundColor = UIColor.redColor()
+            self.noButton.backgroundColor = UIColor.blackColor()
+            self.noButton.alpha = 0.1
+        }
+        else if sender.titleLabel?.text == "NO" {
+            self.noButton.alpha = 1.0
+            self.noButton.backgroundColor = UIColor.redColor()
+            self.yesButton.backgroundColor = UIColor.blackColor()
+            self.yesButton.alpha = 0.1
+        }
+    }
     
     // MARK: - UIViewController Methods
 
@@ -27,6 +88,29 @@ class AddRestaurantTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: - UIImagePickerControllerDelegate Methods
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        self.imageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        self.imageView.contentMode = UIViewContentMode.ScaleAspectFill
+        self.imageView.clipsToBounds = true
+        
+        // Set up the leading, trailing, top, and bottom constraints of the image view programatically so that it fills up the cell's space. 
+        let leadingConstraint = NSLayoutConstraint(item: self.imageView, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: self.imageView.superview, attribute: NSLayoutAttribute.Leading, multiplier: 1, constant: 0)
+        leadingConstraint.active = true
+        
+        let trailingConstraint = NSLayoutConstraint(item: self.imageView, attribute: .Trailing, relatedBy: .Equal, toItem: self.imageView.superview, attribute: .Trailing, multiplier: 1, constant: 0)
+        trailingConstraint.active = true
+        
+        let topConstraint = NSLayoutConstraint(item: self.imageView, attribute: .Top, relatedBy: .Equal, toItem: self.imageView.superview, attribute: .Top, multiplier: 1, constant: 0)
+        topConstraint.active = true
+        
+        let bottomConstraint = NSLayoutConstraint(item: self.imageView, attribute: .Bottom, relatedBy: .Equal, toItem: self.imageView.superview, attribute: .Bottom, multiplier: 1, constant: 0)
+        bottomConstraint.active = true
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     // MARK: - UITableViewDelegate Methods
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -34,6 +118,7 @@ class AddRestaurantTableViewController: UITableViewController {
         guard indexPath.row == 0 else { return }
         guard UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary) else { return }
         let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
         imagePicker.allowsEditing = false
         imagePicker.sourceType = .PhotoLibrary
         
