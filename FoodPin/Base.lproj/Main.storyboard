@@ -6,6 +6,17 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="AvenirNext.ttc">
+            <string>AvenirNext-Medium</string>
+            <string>AvenirNext-Regular</string>
+            <string>AvenirNext-Regular</string>
+            <string>AvenirNext-Medium</string>
+            <string>AvenirNext-Regular</string>
+            <string>AvenirNext-Medium</string>
+            <string>AvenirNext-Medium</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--Food Pin-->
         <scene sceneID="446-Nj-Bxg">
