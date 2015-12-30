@@ -34,7 +34,8 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.restaurantImageView.image = UIImage(named: self.restaurant.image)
+        guard let validImageData = self.restaurant.image else { return }
+        self.restaurantImageView.image = UIImage(data: validImageData)
         
         self.tableView.backgroundColor = UIColor(red: 0.0/255.0, green: 240.0/255.0, blue: 240.0/255.0, alpha: 0.2)
         self.tableView.tableFooterView = UIView(frame: CGRectZero)
@@ -49,7 +50,8 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
         self.navigationController?.hidesBarsOnSwipe = false
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         
-        self.ratingButton.setImage(UIImage(named: self.restaurant.rating), forState: UIControlState.Normal)
+        guard let validRating = self.restaurant.rating where validRating != "" else { return }
+        self.ratingButton.setImage(UIImage(named: validRating), forState: UIControlState.Normal)
     }
 
     override func didReceiveMemoryWarning() {
@@ -89,7 +91,9 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
             cell.valueLabel.text = self.restaurant.phoneNumber
         case 4:
             cell.fieldLabel.text = "Been here"
-            cell.valueLabel.text = self.restaurant.isVisited ? "Yes, I've been here before" : "No"
+            if let isIndeedVisited = self.restaurant.isVisited?.boolValue {
+                isIndeedVisited ? "Yes, I've been here before" : "No"
+            }
         default:
             cell.fieldLabel.text = ""
             cell.valueLabel.text = ""

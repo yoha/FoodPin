@@ -12,6 +12,7 @@ class RestaurantTableViewController: UITableViewController {
     
     // MARK: - Stored Properties
     
+    /***
     var restaurants:[RestaurantModel] = [
         RestaurantModel(name: "Cafe Deadend", type: "Coffee & Tea Shop", location: "G/F, 72 Po Hing Fong, Sheung Wan, Hong Kong", phoneNumber: "232-923423", image: "cafedeadend.jpg"),
         RestaurantModel(name: "Homei", type: "Cafe", location: "Shop B, G/F, 22-24A Tai Ping San Street SOHO, Sheung Wan, Hong Kong", phoneNumber: "348-233423", image: "homei.jpg"),
@@ -42,6 +43,9 @@ class RestaurantTableViewController: UITableViewController {
             "royaloak.jpg"),
         RestaurantModel(name: "Thai Cafe", type: "Thai", location: "22 Charlwood Street London SW1V 2DY Pimlico", phoneNumber: "432-344050", image: "thaicafe.jpg")
     ]
+    ***/
+    
+    var restaurants = [RestaurantModel]()
     
     // MARK: - IBAction Properties
     
@@ -127,7 +131,8 @@ class RestaurantTableViewController: UITableViewController {
         // Social Sharing Button
         let shareAction = UITableViewRowAction(style: .Default, title: "Share") { (action, indexPath) -> Void in
             let defaultText = "Just checking in at " + self.restaurants[indexPath.row].name
-            guard let imageToShare = UIImage(named: self.restaurants[indexPath.row].image) else { return }
+            guard let validImageData = self.restaurants[indexPath.row].image else { return }
+            guard let imageToShare = UIImage(data: validImageData) else { return }
             let activityController = UIActivityViewController(activityItems: [defaultText, imageToShare], applicationActivities: nil)
             self.presentViewController(activityController, animated: true, completion: nil)
         }
@@ -160,12 +165,15 @@ class RestaurantTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! RestaurantTableViewCell
 
         // Configure the cell...
-        cell.thumbnailImageView.image = UIImage(named: self.restaurants[indexPath.row].image)
-        cell.nameLabel.text = self.restaurants[indexPath.row].name
-        cell.locationLabel.text = self.restaurants[indexPath.row].location
-        cell.typeLabel.text = self.restaurants[indexPath.row].type
+        if let validImageData = self.restaurants[indexPath.row].image {
+            cell.thumbnailImageView.image = UIImage(data: validImageData)
+            cell.nameLabel.text = self.restaurants[indexPath.row].name
+            cell.locationLabel.text = self.restaurants[indexPath.row].location
+            cell.typeLabel.text = self.restaurants[indexPath.row].type
             
-        cell.accessoryType = self.restaurants[indexPath.row].isVisited ? .Checkmark : .None
+            guard let isIndeedVisited = self.restaurants[indexPath.row].isVisited?.boolValue else { return cell }
+            cell.accessoryType = isIndeedVisited ? .Checkmark : .None
+        }
 
         return cell
     }

@@ -86,7 +86,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         }
         
         let leftIconView = UIImageView(frame: CGRectMake(0.0, 0.0, 53.0, 53.0))
-        leftIconView.image = UIImage(named: self.restaurant.image)
+        guard let validImageData = self.restaurant.image else { return nil }
+        leftIconView.image = UIImage(data: validImageData)
         annotationView?.leftCalloutAccessoryView = leftIconView
         
         // Change the pin color
