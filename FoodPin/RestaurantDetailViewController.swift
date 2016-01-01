@@ -18,10 +18,19 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
     
     // MARK: - IBAction Properties
     
-    @IBAction func closeReview(segue: UIStoryboardSegue) {
-        guard let reviewViewController = segue.sourceViewController as? ReviewViewController else { return }
-        guard let rating = reviewViewController.rating else { return }
-        self.restaurant.rating = rating
+    @IBAction func dismissReview(segue: UIStoryboardSegue) {
+        guard let validReviewViewController = segue.sourceViewController as? ReviewViewController else { return }
+        guard let validRating = validReviewViewController.rating where validRating != "" else { return }
+        self.restaurant.rating = validRating
+        self.ratingButton.setImage(UIImage(named: validRating), forState: .Normal)
+        
+        guard let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext else { return }
+        do {
+            try managedObjectContext.save()
+        }
+        catch {
+            print(error)
+        }
     }
     
     // MARK: - Stored Properties

@@ -56,7 +56,7 @@ class AddRestaurantTableViewController: UITableViewController, UIImagePickerCont
             return
         }
         
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.performSegueWithIdentifier("unwindToHomeScreen", sender: self)
     }
     
     @IBAction func toggleBeenHereButtonDidSelect(sender: UIButton) {

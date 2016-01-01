@@ -20,11 +20,11 @@ class ReviewViewController: UIViewController {
     @IBAction func ratingSelected(sender: UIButton) {
         switch (sender.tag) {
         case 50:
-            rating = "dislike"
+            self.rating = "dislike"
         case 75:
-            rating = "good"
+            self.rating = "good"
         case 100:
-            rating = "great"
+            self.rating = "great"
         default:
             break
         }

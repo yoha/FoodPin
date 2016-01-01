@@ -403,7 +403,7 @@
                     <navigationItem key="navigationItem" title="New Restaurant" id="2xv-Ok-16c">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="NZe-KS-X2F">
                             <connections>
-                                <segue destination="Em4-5b-Bh3" kind="unwind" unwindAction="unwindToHomeScreen:" id="yGU-th-Jl1"/>
+                                <segue destination="Em4-5b-Bh3" kind="unwind" identifier="unwindToHomeScreen" unwindAction="dismissNewEntry:" id="9Pf-kR-Yv9"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="582-4S-ZR2">
@@ -547,7 +547,7 @@
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" image="close"/>
                                 <connections>
-                                    <segue destination="6x0-g7-i1C" kind="unwind" identifier="unwindToRestaurantDetailVC" unwindAction="closeReview:" id="LJT-Uh-cYm"/>
+                                    <segue destination="6x0-g7-i1C" kind="unwind" identifier="unwindToRestaurantDetailVC" unwindAction="dismissReview:" id="LJT-Uh-cYm"/>
                                 </connections>
                             </button>
                         </subviews>

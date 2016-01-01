@@ -46,12 +46,13 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
     ]
     ***/
     
+    
     var restaurants = [RestaurantModel]()
     var fetchResultController: NSFetchedResultsController!
     
     // MARK: - IBAction Properties
     
-    @IBAction func unwindToHomeScreen(segue: UIStoryboardSegue) {
+    @IBAction func dismissNewEntry(segue: UIStoryboardSegue) {
         
     }
     
