@@ -22,6 +22,7 @@ class AddRestaurantTableViewController: UITableViewController, UIImagePickerCont
     @IBOutlet var restaurantNameTextField: UITextField!
     @IBOutlet var restaurantTypeTextField: UITextField!
     @IBOutlet var restaurantLocationTextField: UITextField!
+    @IBOutlet var restaurantPhoneNumberTextField: UITextField!
     @IBOutlet var yesButton: UIButton!
     @IBOutlet var noButton: UIButton!
     
@@ -30,7 +31,8 @@ class AddRestaurantTableViewController: UITableViewController, UIImagePickerCont
     @IBAction func saveButtonDidTouch(sender: UIBarButtonItem) {
         guard self.restaurantNameTextField.text?.characters.count > 0 &&
             self.restaurantTypeTextField.text?.characters.count > 0 &&
-            self.restaurantLocationTextField.text?.characters.count > 0 else {
+            self.restaurantLocationTextField.text?.characters.count > 0 &&
+            self.restaurantPhoneNumberTextField.text?.characters.count > 0 else {
                 let alertController = UIAlertController(title: "Oops", message: "We can't proceed because one of the fields is blank. Please note that all fields are required", preferredStyle: UIAlertControllerStyle.Alert)
                 alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
             
@@ -44,6 +46,7 @@ class AddRestaurantTableViewController: UITableViewController, UIImagePickerCont
         self.restaurant.name = self.restaurantNameTextField.text!
         self.restaurant.type = self.restaurantTypeTextField.text!
         self.restaurant.location = self.restaurantLocationTextField.text!
+        self.restaurant.phoneNumber = self.restaurantPhoneNumberTextField.text!
         if let validRestaurantImage = self.imageView.image {
             self.restaurant.image = UIImagePNGRepresentation(validRestaurantImage)
         }
