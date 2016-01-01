@@ -7,8 +7,14 @@
 //
 
 import UIKit
+import CoreData
 
 class AddRestaurantTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    // MARK: - Stored Properties
+    
+    var restaurant: RestaurantModel!
+    var isThisRestaurantVisited: Bool!
     
     // MARK: - IBOutlet Methods
     
@@ -32,6 +38,23 @@ class AddRestaurantTableViewController: UITableViewController, UIImagePickerCont
                 return
         }
         
+        guard let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext else { return }
+        self.restaurant = NSEntityDescription.insertNewObjectForEntityForName("RestaurantModel", inManagedObjectContext: managedObjectContext) as! RestaurantModel
+        self.restaurant.name = self.restaurantNameTextField.text!
+        self.restaurant.type = self.restaurantTypeTextField.text!
+        self.restaurant.location = self.restaurantLocationTextField.text!
+        if let validRestaurantImage = self.imageView.image {
+            self.restaurant.image = UIImagePNGRepresentation(validRestaurantImage)
+        }
+        self.restaurant.isVisited = self.isThisRestaurantVisited
+        do {
+            try managedObjectContext.save()
+        }
+        catch {
+            print(error)
+            return
+        }
+        
         print("Restaurant name: \(self.restaurantNameTextField.text!)")
         print("Restaurant type: \(self.restaurantTypeTextField.text!)")
         print("Restaurant location: \(self.restaurantLocationTextField.text!)")
@@ -41,33 +64,20 @@ class AddRestaurantTableViewController: UITableViewController, UIImagePickerCont
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-//    @IBAction func yesButtonDidTouch(sender: UIButton) {
-//        self.yesButton.alpha = 1.0
-//        self.yesButton.backgroundColor = UIColor.redColor()
-//        self.noButton.backgroundColor = UIColor.blackColor()
-//        self.noButton.alpha = 0.1
-//    }
-    
-    
-//    @IBAction func noButtonDidTouch(sender: UIButton) {
-//        self.noButton.alpha = 1.0
-//        self.noButton.backgroundColor = UIColor.redColor()
-//        self.yesButton.backgroundColor = UIColor.blackColor()
-//        self.yesButton.alpha = 0.1
-//    }
-    
     @IBAction func toggleBeenHereButtonDidSelect(sender: UIButton) {
         if sender.titleLabel?.text == "YES" {
             self.yesButton.alpha = 1.0
             self.yesButton.backgroundColor = UIColor.redColor()
             self.noButton.backgroundColor = UIColor.blackColor()
             self.noButton.alpha = 0.1
+            self.isThisRestaurantVisited = true
         }
         else if sender.titleLabel?.text == "NO" {
             self.noButton.alpha = 1.0
             self.noButton.backgroundColor = UIColor.redColor()
             self.yesButton.backgroundColor = UIColor.blackColor()
             self.yesButton.alpha = 0.1
+            self.isThisRestaurantVisited = false
         }
     }
     

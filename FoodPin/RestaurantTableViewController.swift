@@ -161,7 +161,7 @@ class RestaurantTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cellIdentifier = "Cell"
+        let cellIdentifier = "RestaurantInfoCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! RestaurantTableViewCell
 
         // Configure the cell...
@@ -170,7 +170,7 @@ class RestaurantTableViewController: UITableViewController {
             cell.nameLabel.text = self.restaurants[indexPath.row].name
             cell.locationLabel.text = self.restaurants[indexPath.row].location
             cell.typeLabel.text = self.restaurants[indexPath.row].type
-            
+            // TODO: test .None can get invoked. 
             guard let isIndeedVisited = self.restaurants[indexPath.row].isVisited?.boolValue else { return cell }
             cell.accessoryType = isIndeedVisited ? .Checkmark : .None
         }

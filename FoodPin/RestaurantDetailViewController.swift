@@ -47,6 +47,7 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
+        
         self.navigationController?.hidesBarsOnSwipe = false
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         
@@ -73,7 +74,7 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! RestaurantDetailTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("RestaurantInfoCell", forIndexPath: indexPath) as! RestaurantDetailTableViewCell
         
         // configure the cell...
         switch indexPath.row {
@@ -91,9 +92,12 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
             cell.valueLabel.text = self.restaurant.phoneNumber
         case 4:
             cell.fieldLabel.text = "Been here"
-            if let isIndeedVisited = self.restaurant.isVisited?.boolValue {
-                isIndeedVisited ? "Yes, I've been here before" : "No"
-            }
+            // TODO: test "No" can get invoked as well
+            guard let isIndeedVisited = self.restaurant.isVisited?.boolValue else { break }
+            isIndeedVisited ? "Yes, I've been here before" : "No"
+//            if let isIndeedVisited = self.restaurant.isVisited?.boolValue {
+//                isIndeedVisited ? "Yes, I've been here before" : "No"
+//            }
         default:
             cell.fieldLabel.text = ""
             cell.valueLabel.text = ""
