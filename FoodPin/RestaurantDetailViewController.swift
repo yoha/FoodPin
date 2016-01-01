@@ -92,12 +92,8 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
             cell.valueLabel.text = self.restaurant.phoneNumber
         case 4:
             cell.fieldLabel.text = "Been here"
-            // TODO: test "No" can get invoked as well
             guard let isIndeedVisited = self.restaurant.isVisited?.boolValue else { break }
-            isIndeedVisited ? "Yes, I've been here before" : "No"
-//            if let isIndeedVisited = self.restaurant.isVisited?.boolValue {
-//                isIndeedVisited ? "Yes, I've been here before" : "No"
-//            }
+            cell.valueLabel.text = isIndeedVisited ? "Yes" : "No"
         default:
             cell.fieldLabel.text = ""
             cell.valueLabel.text = ""

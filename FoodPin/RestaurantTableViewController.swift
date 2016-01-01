@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import CoreData
 
-class RestaurantTableViewController: UITableViewController {
+class RestaurantTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     
     // MARK: - Stored Properties
     
@@ -46,11 +47,42 @@ class RestaurantTableViewController: UITableViewController {
     ***/
     
     var restaurants = [RestaurantModel]()
+    var fetchResultController: NSFetchedResultsController!
     
     // MARK: - IBAction Properties
     
     @IBAction func unwindToHomeScreen(segue: UIStoryboardSegue) {
         
+    }
+    
+    // MARK: - NSFetchedResultsControllerDelegate Methods
+    
+    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+        self.tableView.beginUpdates()
+    }
+    
+    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+        switch type {
+        case NSFetchedResultsChangeType.Insert:
+            if let freshIndexPath = newIndexPath {
+                self.tableView.insertRowsAtIndexPaths([freshIndexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+            }
+        case .Delete:
+            if let depreciatedIndexPath = indexPath {
+                self.tableView.deleteRowsAtIndexPaths([depreciatedIndexPath], withRowAnimation: .Fade)
+            }
+        case .Update:
+            if let changedIndexPath = indexPath {
+                self.tableView.reloadRowsAtIndexPaths([changedIndexPath], withRowAnimation: .Fade)
+            }
+        default:
+            self.tableView.reloadData()
+        }
+        self.restaurants = controller.fetchedObjects as? [RestaurantModel] ?? []
+    }
+    
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        self.tableView.endUpdates()
     }
     
     // MARK: - UIViewController Methods
@@ -68,16 +100,42 @@ class RestaurantTableViewController: UITableViewController {
             
         self.tableView.estimatedRowHeight = 36
         self.tableView.rowHeight = UITableViewAutomaticDimension
+        
+        // Fetch data from persistent storage using Core Data [more efficient way; only load and display the change]
+        let fetchRequest = NSFetchRequest(entityName: "RestaurantModel")
+        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        guard let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext else { return }
+        self.fetchResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        self.fetchResultController.delegate = self
+        
+        do {
+            try self.fetchResultController.performFetch()
+            guard let validFetchedObjects = self.fetchResultController.fetchedObjects as? [RestaurantModel] else { return }
+            self.restaurants = validFetchedObjects
+        }
+        catch {
+            print(error)
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
+        
         self.navigationController?.hidesBarsOnSwipe = true
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+        // Fetch data from persistent storage using Core Data [less efficient way since all restaurants are reloaded & redisplayed every time]
+//        guard let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext else { return }
+//        let fetchRequest = NSFetchRequest(entityName: "RestaurantModel")
+//        do {
+//            self.restaurants = try managedObjectContext.executeFetchRequest(fetchRequest) as! [RestaurantModel]
+//            self.tableView.reloadData()
+//        }
+//        catch {
+//            print(error)
+//            return
+//        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -170,7 +228,6 @@ class RestaurantTableViewController: UITableViewController {
             cell.nameLabel.text = self.restaurants[indexPath.row].name
             cell.locationLabel.text = self.restaurants[indexPath.row].location
             cell.typeLabel.text = self.restaurants[indexPath.row].type
-            // TODO: test .None can get invoked. 
             guard let isIndeedVisited = self.restaurants[indexPath.row].isVisited?.boolValue else { return cell }
             cell.accessoryType = isIndeedVisited ? .Checkmark : .None
         }

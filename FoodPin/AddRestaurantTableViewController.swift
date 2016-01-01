@@ -38,6 +38,7 @@ class AddRestaurantTableViewController: UITableViewController, UIImagePickerCont
                 return
         }
         
+        // Save data to persistent storage using Core Data
         guard let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext else { return }
         self.restaurant = NSEntityDescription.insertNewObjectForEntityForName("RestaurantModel", inManagedObjectContext: managedObjectContext) as! RestaurantModel
         self.restaurant.name = self.restaurantNameTextField.text!
@@ -54,12 +55,6 @@ class AddRestaurantTableViewController: UITableViewController, UIImagePickerCont
             print(error)
             return
         }
-        
-        print("Restaurant name: \(self.restaurantNameTextField.text!)")
-        print("Restaurant type: \(self.restaurantTypeTextField.text!)")
-        print("Restaurant location: \(self.restaurantLocationTextField.text!)")
-        
-        yesButton.alpha == 1.0 ? print("User has been here before") : print("User has not been here before")
         
         self.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -135,53 +130,6 @@ class AddRestaurantTableViewController: UITableViewController, UIImagePickerCont
         self.presentViewController(imagePicker, animated: true, completion: nil)
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
-
-    // MARK: - Table view data source
-
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 
     /*
     // MARK: - Navigation
