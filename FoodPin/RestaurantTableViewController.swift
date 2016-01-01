@@ -187,7 +187,7 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         
         // Social Sharing Button
-        let shareAction = UITableViewRowAction(style: .Default, title: "Share") { (action, indexPath) -> Void in
+        let shareAction = UITableViewRowAction(style: .Default, title: "Share") { (tableViewRowAction, indexPath) -> Void in
             let defaultText = "Just checking in at " + self.restaurants[indexPath.row].name
             guard let validImageData = self.restaurants[indexPath.row].image else { return }
             guard let imageToShare = UIImage(data: validImageData) else { return }
@@ -195,12 +195,18 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
             self.presentViewController(activityController, animated: true, completion: nil)
         }
         
-        // Delete Button
-        let deleteAction = UITableViewRowAction(style: .Default, title: "Delete") { (action, indexPath) -> Void in
-            // Delete the row from the data source
-            self.restaurants.removeAtIndex(indexPath.row)
-    
-            self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+        // Delete data in db and in table view using core data
+        let deleteAction = UITableViewRowAction(style: .Default, title: "Delete") { (tableViewRowAction, indexPath) -> Void in
+            guard let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext else { return }
+            guard let restaurantToDelete = self.fetchResultController.objectAtIndexPath(indexPath) as? RestaurantModel else { return }
+            managedObjectContext.deleteObject(restaurantToDelete)
+            
+            do {
+                try managedObjectContext.save()
+            }
+            catch {
+                print(error)
+            }
         }
         
         shareAction.backgroundColor = UIColor(red: 28.0/255.0, green: 165.0/255.0, blue: 253.0/255.0, alpha: 1.0)
