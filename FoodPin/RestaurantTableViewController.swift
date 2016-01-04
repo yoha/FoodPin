@@ -48,7 +48,10 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
     
     
     var restaurants = [RestaurantModel]()
+    
     var fetchResultController: NSFetchedResultsController!
+    
+    var searchController: UISearchController!
     
     // MARK: - IBAction Properties
     
@@ -90,17 +93,14 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
             
         self.tableView.estimatedRowHeight = 36
         self.tableView.rowHeight = UITableViewAutomaticDimension
+        
+        self.searchController = UISearchController(searchResultsController: nil)
+        self.tableView.tableHeaderView = self.searchController.searchBar
         
         // Fetch data from persistent storage using Core Data [more efficient way; only load and display the change]
         let fetchRequest = NSFetchRequest(entityName: "RestaurantModel")
