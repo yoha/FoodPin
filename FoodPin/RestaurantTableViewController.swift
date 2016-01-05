@@ -64,8 +64,9 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
     
     func filterContentForSearchText(parameter: String) {
         self.searchResults = self.restaurants.filter({ (restaurant) -> Bool in
-            let match = restaurant.name.rangeOfString(parameter, options: NSStringCompareOptions.CaseInsensitiveSearch)
-            return match != nil
+            let matchingName = restaurant.name.rangeOfString(parameter, options: NSStringCompareOptions.CaseInsensitiveSearch)
+            let matchingLocation = restaurant.location.rangeOfString(parameter, options: .CaseInsensitiveSearch)
+            return matchingName != nil || matchingLocation != nil
         })
     }
     
