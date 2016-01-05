@@ -52,11 +52,21 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
     var fetchResultController: NSFetchedResultsController!
     
     var searchController: UISearchController!
+    var searchResults: [RestaurantModel] = []
     
     // MARK: - IBAction Properties
     
     @IBAction func dismissNewEntry(segue: UIStoryboardSegue) {
         
+    }
+    
+    // MARK: - Local Methods
+    
+    func filterContentForSearchText(parameter: String) {
+        self.searchResults = self.restaurants.filter({ (restaurant) -> Bool in
+            let match = restaurant.name.rangeOfString(parameter, options: NSStringCompareOptions.CaseInsensitiveSearch)
+            return match != nil
+        })
     }
     
     // MARK: - NSFetchedResultsControllerDelegate Methods
