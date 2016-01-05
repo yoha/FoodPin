@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class RestaurantTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+class RestaurantTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, UISearchResultsUpdating {
     
     // MARK: - Stored Properties
     
@@ -99,6 +99,14 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
         self.tableView.endUpdates()
     }
     
+    // MARK: - UISearchResultsUpdating Protocol Method
+    
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        guard let searchText = self.searchController.searchBar.text else { return }
+        self.filterContentForSearchText(searchText)
+        self.tableView.reloadData()
+    }
+    
     // MARK: - UIViewController Methods
 
     override func viewDidLoad() {
@@ -110,6 +118,8 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
         self.tableView.rowHeight = UITableViewAutomaticDimension
         
         self.searchController = UISearchController(searchResultsController: nil)
+        self.searchController.searchResultsUpdater = self
+        self.searchController.obscuresBackgroundDuringPresentation = false
         self.tableView.tableHeaderView = self.searchController.searchBar
         
         // Fetch data from persistent storage using Core Data [more efficient way; only load and display the change]
@@ -153,7 +163,7 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
         if segue.identifier == "showRestaurantDetail" {
             guard let indexPath = self.tableView.indexPathForSelectedRow else { return }
             let destinationViewController = segue.destinationViewController as! RestaurantDetailViewController
-            destinationViewController.restaurant = self.restaurants[indexPath.row]
+            destinationViewController.restaurant = self.searchController.active ? self.searchResults[indexPath.row] : self.restaurants[indexPath.row]
         }
     }
     
@@ -232,24 +242,29 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.restaurants.count
+        return self.searchController.active ? self.searchResults.count : self.restaurants.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cellIdentifier = "RestaurantInfoCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! RestaurantTableViewCell
 
+        let eachRestaurant = self.searchController.active ? self.searchResults[indexPath.row] : self.restaurants[indexPath.row]
+        
         // Configure the cell...
-        if let validImageData = self.restaurants[indexPath.row].image {
-            cell.thumbnailImageView.image = UIImage(data: validImageData)
-            cell.nameLabel.text = self.restaurants[indexPath.row].name
-            cell.locationLabel.text = self.restaurants[indexPath.row].location
-            cell.typeLabel.text = self.restaurants[indexPath.row].type
-            guard let isIndeedVisited = self.restaurants[indexPath.row].isVisited?.boolValue else { return cell }
-            cell.accessoryType = isIndeedVisited ? .Checkmark : .None
-        }
+        guard let validImageData = eachRestaurant.image else { return cell }
+        cell.thumbnailImageView.image = UIImage(data: validImageData)
+        cell.nameLabel.text = eachRestaurant.name
+        cell.locationLabel.text = eachRestaurant.location
+        cell.typeLabel.text = eachRestaurant.type
+        guard let isIndeedVisited = eachRestaurant.isVisited?.boolValue else { return cell }
+        cell.accessoryType = isIndeedVisited ? .Checkmark : .None
 
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return self.searchController.active ? false : true
     }
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
