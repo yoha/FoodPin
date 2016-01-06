@@ -649,10 +649,10 @@
             </objects>
             <point key="canvasLocation" x="580" y="1337"/>
         </scene>
-        <!--View Controller-->
+        <!--Walk Through Content View Controller-->
         <scene sceneID="9WR-Gv-ZMr">
             <objects>
-                <viewController storyboardIdentifier="WalkthroughContentViewController" id="h6F-6g-4Ak" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WalkthroughContentViewController" id="h6F-6g-4Ak" customClass="WalkThroughContentViewController" customModule="FoodPin" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Z46-Y2-ena"/>
                         <viewControllerLayoutGuide type="bottom" id="tzY-tl-VXA"/>
@@ -695,6 +695,11 @@
                             <constraint firstItem="t9m-kG-X7R" firstAttribute="leading" secondItem="u8G-M1-zDp" secondAttribute="leading" constant="30" id="sFY-0q-Ana"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="contentImageView" destination="t9m-kG-X7R" id="hHi-Lh-34L"/>
+                        <outlet property="contentLabel" destination="8bg-9K-Iem" id="Zzd-2N-fcG"/>
+                        <outlet property="headingLabel" destination="uQJ-aW-KBQ" id="qcf-kB-h7e"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SpE-qA-Rh4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
