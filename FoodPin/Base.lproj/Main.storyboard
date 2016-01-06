@@ -638,6 +638,14 @@
             </objects>
             <point key="canvasLocation" x="580" y="587"/>
         </scene>
+        <!--Page View Controller-->
+        <scene sceneID="Pt1-jg-5pQ">
+            <objects>
+                <pageViewController storyboardIdentifier="WalkthroughController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="f5X-bm-Otg" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xsy-S5-jeh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="580" y="1337"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="CPe-zG-Gwj">
             <objects>
