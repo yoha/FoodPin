@@ -1,0 +1,64 @@
+//
+//  WalkthroughPageViewController.swift
+//  FoodPin
+//
+//  Created by Yohannes Wijaya on 1/6/16.
+//  Copyright © 2016 Yohannes Wijaya. All rights reserved.
+//
+
+import UIKit
+
+class WalkthroughPageViewController: UIPageViewController, UIPageViewControllerDataSource {
+
+    // MARK: - Stored Properties
+    
+    let pageHeadings = ["Personalize", "Locate", "Discover"]
+    let pageImages = ["foodpin-intro-1", "foodpin-intro-2", "foodpin-intro-3"]
+    let pageContent = [
+        "Pin your favorite restaurants and create your own food guide",
+        "Search and locate your favorite restaurant on the map",
+        "Find restaurants pinned by your friends and other foodies aroudn the world"
+    ]
+    
+    // MARK: - UIPageViewControllerDataSource Methods
+    
+    func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
+        guard var pageIndex = (viewController as? WalkThroughContentViewController)?.currentPageIndex else { return nil }
+        --pageIndex
+        
+        return self.createPageContentViewControllerOnDemandAtIndex(pageIndex)
+    }
+    
+    func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
+        guard var pageIndex = (viewController as? WalkThroughContentViewController)?.currentPageIndex else { return nil }
+        ++pageIndex
+        
+        return self.createPageContentViewControllerOnDemandAtIndex(pageIndex)
+    }
+    
+    // MARK: - UIViewController Methods
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.dataSource = self
+        
+        guard let startingPageContentViewController = self.createPageContentViewControllerOnDemandAtIndex(0) else { return }
+        self.setViewControllers([startingPageContentViewController], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
+    }
+
+    // MARK: - Local Methods
+    
+    func createPageContentViewControllerOnDemandAtIndex(index: Int) -> WalkThroughContentViewController? {
+        guard index != NSNotFound || index > 0 || index <= self.pageHeadings.count else { return nil }
+        if let pageContentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("WalkthroughContentViewController") as? WalkThroughContentViewController {
+            pageContentViewController.heading = self.pageHeadings[index]
+            pageContentViewController.imageFile = self.pageImages[index]
+            pageContentViewController.content = self.pageContent[index]
+            pageContentViewController.currentPageIndex = index
+            
+            return pageContentViewController
+        }
+        else { return nil }
+    }
+}

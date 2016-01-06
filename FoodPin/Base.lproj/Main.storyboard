@@ -641,10 +641,10 @@
             </objects>
             <point key="canvasLocation" x="580" y="587"/>
         </scene>
-        <!--Page View Controller-->
+        <!--Walkthrough Page View Controller-->
         <scene sceneID="Pt1-jg-5pQ">
             <objects>
-                <pageViewController storyboardIdentifier="WalkthroughContainerController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="f5X-bm-Otg" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="WalkthroughContainerController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="f5X-bm-Otg" customClass="WalkthroughPageViewController" customModule="FoodPin" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xsy-S5-jeh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="580" y="1337"/>
