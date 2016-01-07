@@ -17,22 +17,20 @@ class WalkthroughPageViewController: UIPageViewController, UIPageViewControllerD
     let pageContent = [
         "Pin your favorite restaurants and create your own food guide",
         "Search and locate your favorite restaurant on the map",
-        "Find restaurants pinned by your friends and other foodies aroudn the world"
+        "Find restaurants pinned by your friends and other foodies around the world"
     ]
     
     // MARK: - UIPageViewControllerDataSource Methods
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
-        guard var pageIndex = (viewController as? WalkThroughContentViewController)?.currentPageIndex else { return nil }
+        guard var pageIndex = (viewController as? WalkThroughPageContentViewController)?.currentPageIndex else { return nil }
         --pageIndex
-        
         return self.createPageContentViewControllerOnDemandAtIndex(pageIndex)
     }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
-        guard var pageIndex = (viewController as? WalkThroughContentViewController)?.currentPageIndex else { return nil }
+        guard var pageIndex = (viewController as? WalkThroughPageContentViewController)?.currentPageIndex else { return nil }
         ++pageIndex
-        
         return self.createPageContentViewControllerOnDemandAtIndex(pageIndex)
     }
     
@@ -49,9 +47,9 @@ class WalkthroughPageViewController: UIPageViewController, UIPageViewControllerD
 
     // MARK: - Local Methods
     
-    func createPageContentViewControllerOnDemandAtIndex(index: Int) -> WalkThroughContentViewController? {
-        guard index != NSNotFound || index > 0 || index <= self.pageHeadings.count else { return nil }
-        if let pageContentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("WalkthroughContentViewController") as? WalkThroughContentViewController {
+    func createPageContentViewControllerOnDemandAtIndex(index: Int) -> WalkThroughPageContentViewController? {
+        guard index >= 0 && index < self.pageHeadings.count else { return nil }
+        if let pageContentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("WalkthroughPageContentViewController") as? WalkThroughPageContentViewController {
             pageContentViewController.heading = self.pageHeadings[index]
             pageContentViewController.imageFile = self.pageImages[index]
             pageContentViewController.content = self.pageContent[index]

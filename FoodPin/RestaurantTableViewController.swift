@@ -142,6 +142,13 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
         }
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        guard let pageViewcontroller = self.storyboard?.instantiateViewControllerWithIdentifier("WalkthroughPageViewController") as? WalkthroughPageViewController else { return }
+        self.presentViewController(pageViewcontroller, animated: true, completion: nil)
+    }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         

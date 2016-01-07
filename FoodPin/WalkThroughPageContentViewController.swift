@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WalkThroughContentViewController: UIViewController {
+class WalkThroughPageContentViewController: UIViewController {
     
     // MARK: - IBOutlet Properties
     
@@ -28,5 +28,9 @@ class WalkThroughContentViewController: UIViewController {
         self.headingLabel.text = self.heading
         self.contentImageView.image = UIImage(named: self.imageFile)
         self.contentLabel.text = self.content
+        
+        self.view.backgroundColor = UIColor(red: 242.0/255.0, green: 116.0/255.0, blue: 119.0/255.0, alpha: 1.0)
+        self.headingLabel.textColor = UIColor.whiteColor()
+        self.contentLabel.textColor = UIColor.whiteColor()
     }
 }
