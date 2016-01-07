@@ -34,6 +34,8 @@ class WalkthroughPageViewController: UIPageViewController, UIPageViewControllerD
         return self.createPageContentViewControllerOnDemandAtIndex(pageIndex)
     }
     
+    /*** Call these two methods if you want to have default page indicator & remove UIPageControl object from IB
+     
     func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
         return self.pageHeadings.count
     }
@@ -44,6 +46,7 @@ class WalkthroughPageViewController: UIPageViewController, UIPageViewControllerD
         }
         else { return 0 }
     }
+    ***/
     
     // MARK: - UIViewController Methods
     
