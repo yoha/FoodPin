@@ -55,8 +55,6 @@ class WalkthroughPageViewController: UIPageViewController, UIPageViewControllerD
         
         self.dataSource = self
         
-        self.view.backgroundColor = UIColor(red: 242.0/255.0, green: 116.0/255.0, blue: 119.0/255.0, alpha: 1.0)
-        
         guard let startingPageContentViewController = self.createPageContentViewControllerOnDemandAtIndex(0) else { return }
         self.setViewControllers([startingPageContentViewController], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
     }
@@ -74,5 +72,10 @@ class WalkthroughPageViewController: UIPageViewController, UIPageViewControllerD
             return pageContentViewController
         }
         else { return nil }
+    }
+    
+    func goToTheNextPageContentViewController(index: Int) {
+        guard let nextPageContentViewController = self.createPageContentViewControllerOnDemandAtIndex(index + 1) else { return }
+        self.setViewControllers([nextPageContentViewController], direction: .Forward, animated: true, completion: nil)
     }
 }

@@ -60,6 +60,11 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
         
     }
     
+    @IBAction func helpButtonDidTouch(sender: UIBarButtonItem) {
+        guard let pageViewcontroller = self.storyboard?.instantiateViewControllerWithIdentifier("WalkthroughPageViewController") as? WalkthroughPageViewController else { return }
+        self.presentViewController(pageViewcontroller, animated: true, completion: nil)
+    }
+    
     // MARK: - Local Methods
     
     func filterContentForSearchText(parameter: String) {
@@ -143,10 +148,15 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
     }
     
     override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
+        super.viewDidAppear(true)
         
-        guard let pageViewcontroller = self.storyboard?.instantiateViewControllerWithIdentifier("WalkthroughPageViewController") as? WalkthroughPageViewController else { return }
-        self.presentViewController(pageViewcontroller, animated: true, completion: nil)
+        if NSUserDefaults.standardUserDefaults().boolForKey("userHasViewedWalkthrough") {
+            return
+        }
+        else {
+            guard let pageViewcontroller = self.storyboard?.instantiateViewControllerWithIdentifier("WalkthroughPageViewController") as? WalkthroughPageViewController else { return }
+            self.presentViewController(pageViewcontroller, animated: true, completion: nil)
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -154,17 +164,18 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
         
         self.navigationController?.hidesBarsOnSwipe = true
         
-        // Fetch data from persistent storage using Core Data [less efficient way since all restaurants are reloaded & redisplayed every time]
-//        guard let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext else { return }
-//        let fetchRequest = NSFetchRequest(entityName: "RestaurantModel")
-//        do {
-//            self.restaurants = try managedObjectContext.executeFetchRequest(fetchRequest) as! [RestaurantModel]
-//            self.tableView.reloadData()
-//        }
-//        catch {
-//            print(error)
-//            return
-//        }
+        /*** Fetch data from persistent storage using Core Data [less efficient way since all restaurants are reloaded & redisplayed every time]
+        guard let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext else { return }
+        let fetchRequest = NSFetchRequest(entityName: "RestaurantModel")
+        do {
+            self.restaurants = try managedObjectContext.executeFetchRequest(fetchRequest) as! [RestaurantModel]
+            self.tableView.reloadData()
+        }
+        catch {
+            print(error)
+            return
+        }
+        ***/
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -175,7 +186,7 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
         }
     }
     
-    // MARK: - Table View Delegate Methods
+    // MARK: - UITableViewDelegate    Methods
     
 //    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 //        let optionMenu = UIAlertController(title: nil, message: "What do you want to do?", preferredStyle: UIAlertControllerStyle.ActionSheet)
@@ -243,7 +254,7 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
         return [deleteAction, shareAction]
     }
 
-    // MARK: - Table View Data Source Methods
+    // MARK: - UITableViewDataSource Methods
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -314,16 +325,6 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
     override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return false if you do not want the item to be re-orderable.
         return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
     }
     */
 
