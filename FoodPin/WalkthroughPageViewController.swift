@@ -34,6 +34,17 @@ class WalkthroughPageViewController: UIPageViewController, UIPageViewControllerD
         return self.createPageContentViewControllerOnDemandAtIndex(pageIndex)
     }
     
+    func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
+        return self.pageHeadings.count
+    }
+    
+    func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
+        if let pageContentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("WalkthroughPageContentViewController") as? WalkThroughPageContentViewController {
+            return pageContentViewController.currentPageIndex
+        }
+        else { return 0 }
+    }
+    
     // MARK: - UIViewController Methods
     
     override func viewDidLoad() {
