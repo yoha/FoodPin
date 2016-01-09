@@ -19,6 +19,8 @@
 		65C39C3B1C2AE5D8006C18CE /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C39C3A1C2AE5D8006C18CE /* MapKit.framework */; };
 		65C39C3D1C2AF0FE006C18CE /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C39C3C1C2AF0FE006C18CE /* MapViewController.swift */; };
 		65C861211C0F383000710A2A /* RestaurantTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C861201C0F383000710A2A /* RestaurantTableViewController.swift */; };
+		65D53FF31C410B50000D5286 /* About.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65D53FF21C410B50000D5286 /* About.storyboard */; };
+		65D53FF61C410BA7000D5286 /* Discover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65D53FF41C410BA7000D5286 /* Discover.storyboard */; };
 		65E56DF31C3D1DA400AA4E42 /* WalkThroughPageContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E56DF21C3D1DA400AA4E42 /* WalkThroughPageContentViewController.swift */; };
 		65E56DF51C3D54A800AA4E42 /* WalkthroughPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E56DF41C3D54A800AA4E42 /* WalkthroughPageViewController.swift */; };
 		65F158731C18363300FDF293 /* RestaurantModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F158721C18363300FDF293 /* RestaurantModel.swift */; };
@@ -40,6 +42,8 @@
 		65C39C3A1C2AE5D8006C18CE /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		65C39C3C1C2AF0FE006C18CE /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		65C861201C0F383000710A2A /* RestaurantTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewController.swift; sourceTree = "<group>"; };
+		65D53FF21C410B50000D5286 /* About.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = About.storyboard; sourceTree = "<group>"; };
+		65D53FF51C410BA7000D5286 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Discover.storyboard; sourceTree = "<group>"; };
 		65E56DF21C3D1DA400AA4E42 /* WalkThroughPageContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkThroughPageContentViewController.swift; sourceTree = "<group>"; };
 		65E56DF41C3D54A800AA4E42 /* WalkthroughPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkthroughPageViewController.swift; sourceTree = "<group>"; };
 		65F158721C18363300FDF293 /* RestaurantModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantModel.swift; sourceTree = "<group>"; };
@@ -81,6 +85,8 @@
 				6592EC691C0F34BC00CF975D /* AppDelegate.swift */,
 				65F5085B1C33D1CB00FA8EDB /* FoodPin.xcdatamodeld */,
 				6592EC6D1C0F34BC00CF975D /* Main.storyboard */,
+				65D53FF41C410BA7000D5286 /* Discover.storyboard */,
+				65D53FF21C410B50000D5286 /* About.storyboard */,
 				6592EC701C0F34BC00CF975D /* Assets.xcassets */,
 				6592EC721C0F34BC00CF975D /* LaunchScreen.storyboard */,
 				6592EC751C0F34BC00CF975D /* Info.plist */,
@@ -164,6 +170,8 @@
 			files = (
 				6592EC741C0F34BC00CF975D /* LaunchScreen.storyboard in Resources */,
 				6592EC711C0F34BC00CF975D /* Assets.xcassets in Resources */,
+				65D53FF61C410BA7000D5286 /* Discover.storyboard in Resources */,
+				65D53FF31C410B50000D5286 /* About.storyboard in Resources */,
 				6592EC6F1C0F34BC00CF975D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -207,6 +215,14 @@
 				6592EC731C0F34BC00CF975D /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		65D53FF41C410BA7000D5286 /* Discover.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				65D53FF51C410BA7000D5286 /* Base */,
+			);
+			name = Discover.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
