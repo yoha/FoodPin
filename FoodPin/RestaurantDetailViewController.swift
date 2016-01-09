@@ -83,7 +83,7 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("RestaurantInfoCell", forIndexPath: indexPath) as! RestaurantDetailTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("RestaurantDetailTableViewCell", forIndexPath: indexPath) as! RestaurantDetailTableViewCell
         
         // configure the cell...
         switch indexPath.row {

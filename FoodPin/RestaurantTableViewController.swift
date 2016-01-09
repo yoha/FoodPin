@@ -266,7 +266,7 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cellIdentifier = "RestaurantInfoCell"
+        let cellIdentifier = "RestaurantTableViewCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! RestaurantTableViewCell
 
         let eachRestaurant = self.searchController.active ? self.searchResults[indexPath.row] : self.restaurants[indexPath.row]
