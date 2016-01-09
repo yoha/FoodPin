@@ -56,7 +56,7 @@
         <scene sceneID="eAZ-t0-cDN">
             <objects>
                 <navigationController title="About Navigation Controller" id="yJM-pN-lxb" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="more" id="fUS-aF-J5r"/>
+                    <tabBarItem key="tabBarItem" title="About" image="about" id="fUS-aF-J5r"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Bqq-Af-yWD">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -679,7 +679,7 @@
         <scene sceneID="FAX-C8-XUA">
             <objects>
                 <navigationController title="Super Navigation Controller" automaticallyAdjustsScrollViewInsets="NO" id="mub-ed-mVL" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="favorites" id="Cx2-IN-M8C"/>
+                    <tabBarItem key="tabBarItem" title="Favorite" image="favorite" id="Cx2-IN-M8C"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="NI4-8A-QzT">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -727,7 +727,7 @@
         <scene sceneID="RvE-hk-NrN">
             <objects>
                 <navigationController title="Discover Navigation Controller" id="R3v-KU-m3n" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="recents" id="Tza-L3-KRY"/>
+                    <tabBarItem key="tabBarItem" title="Discover" image="discover" id="Tza-L3-KRY"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="1mz-WG-d1u">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -860,9 +860,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="about" width="25" height="25"/>
         <image name="barrafina" width="640" height="640"/>
         <image name="close" width="84" height="84"/>
+        <image name="discover" width="25" height="25"/>
         <image name="dislike" width="84" height="84"/>
+        <image name="favorite" width="25" height="25"/>
         <image name="good" width="256" height="256"/>
         <image name="great" width="256" height="256"/>
         <image name="map" width="48" height="48"/>
