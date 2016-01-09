@@ -20,7 +20,7 @@ class RestaurantTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.thumbnailImageView.layer.cornerRadius = 15.0
+        self.thumbnailImageView.layer.cornerRadius = 30.0
         self.thumbnailImageView.clipsToBounds = true
     }
 
