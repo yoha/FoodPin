@@ -15,6 +15,7 @@ class AboutTableViewController: UITableViewController {
     let sectionTitles = ["Leave Feedback", "Follow US"]
     let sectionContent = [["Rate us on App Store", "Tell us your feedback"], ["Twitter", "Facebook", "Pinterest"]]
     let links = ["https://twitter.com/appcodamobile", "https://facebook.com/appcodamobile", "https://pinterest.com/appcoda/"]
+    let rateAppUrl = "http://apple.com/itunes/charts/paid-apps/"
 
     // MARK: - UITableViewDataSource Methods
 
@@ -39,6 +40,21 @@ class AboutTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return self.sectionTitles[section]
+    }
+    
+    // MARK: - UITableViewDelegate Methods
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if case 0 = indexPath.section {
+            switch indexPath.row {
+            case 0:
+                guard let validRateAppUrl = NSURL(string: self.rateAppUrl) else { break }
+                UIApplication.sharedApplication().openURL(validRateAppUrl)
+            default:
+                break
+            }
+        }
+        self.tableView.deselectRowAtIndexPath(indexPath, animated: false)
     }
     
     // MARK: - UIViewController Methods
