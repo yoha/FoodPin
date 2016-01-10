@@ -40,5 +40,13 @@ class AboutTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return self.sectionTitles[section]
     }
+    
+    // MARK: - UIViewController Methods
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.tableView.tableFooterView = UIView(frame: CGRectZero)
+    }
 
 }

@@ -145,6 +145,8 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
         catch {
             print(error)
         }
+        
+        self.tableView.tableFooterView = UIView(frame: CGRectZero)
     }
     
     override func viewDidAppear(animated: Bool) {
