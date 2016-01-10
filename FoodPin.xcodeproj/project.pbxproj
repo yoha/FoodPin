@@ -16,6 +16,7 @@
 		6592EC711C0F34BC00CF975D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6592EC701C0F34BC00CF975D /* Assets.xcassets */; };
 		6592EC741C0F34BC00CF975D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6592EC721C0F34BC00CF975D /* LaunchScreen.storyboard */; };
 		659E4FC11C27F0000067A56F /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659E4FC01C27F0000067A56F /* ReviewViewController.swift */; };
+		65A9CFCF1C427D0100D5E8A9 /* AboutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A9CFCE1C427D0100D5E8A9 /* AboutTableViewController.swift */; };
 		65C39C3B1C2AE5D8006C18CE /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65C39C3A1C2AE5D8006C18CE /* MapKit.framework */; };
 		65C39C3D1C2AF0FE006C18CE /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C39C3C1C2AF0FE006C18CE /* MapViewController.swift */; };
 		65C861211C0F383000710A2A /* RestaurantTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C861201C0F383000710A2A /* RestaurantTableViewController.swift */; };
@@ -39,6 +40,7 @@
 		6592EC731C0F34BC00CF975D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6592EC751C0F34BC00CF975D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		659E4FC01C27F0000067A56F /* ReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
+		65A9CFCE1C427D0100D5E8A9 /* AboutTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutTableViewController.swift; sourceTree = "<group>"; };
 		65C39C3A1C2AE5D8006C18CE /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		65C39C3C1C2AF0FE006C18CE /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		65C861201C0F383000710A2A /* RestaurantTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewController.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				6592EC701C0F34BC00CF975D /* Assets.xcassets */,
 				6592EC721C0F34BC00CF975D /* LaunchScreen.storyboard */,
 				6592EC751C0F34BC00CF975D /* Info.plist */,
+				65A9CFCE1C427D0100D5E8A9 /* AboutTableViewController.swift */,
 				65E56DF21C3D1DA400AA4E42 /* WalkThroughPageContentViewController.swift */,
 				65E56DF41C3D54A800AA4E42 /* WalkthroughPageViewController.swift */,
 				65C861201C0F383000710A2A /* RestaurantTableViewController.swift */,
@@ -184,6 +187,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				65C861211C0F383000710A2A /* RestaurantTableViewController.swift in Sources */,
+				65A9CFCF1C427D0100D5E8A9 /* AboutTableViewController.swift in Sources */,
 				6555BDE91C2E825B0054FFC6 /* AddRestaurantTableViewController.swift in Sources */,
 				6565F86C1C11FBDC004AAD0D /* RestaurantTableViewCell.swift in Sources */,
 				65E56DF31C3D1DA400AA4E42 /* WalkThroughPageContentViewController.swift in Sources */,

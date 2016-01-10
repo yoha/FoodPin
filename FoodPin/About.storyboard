@@ -8,7 +8,7 @@
         <!--About View Controller-->
         <scene sceneID="ZKR-Pn-1gk">
             <objects>
-                <tableViewController title="About View Controller" id="msy-Nn-Gjj" sceneMemberID="viewController">
+                <tableViewController title="About View Controller" id="msy-Nn-Gjj" customClass="AboutTableViewController" customModule="FoodPin" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="EMu-z6-fV9">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
