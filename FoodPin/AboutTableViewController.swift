@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class AboutTableViewController: UITableViewController {
     
@@ -50,10 +51,18 @@ class AboutTableViewController: UITableViewController {
             case 0:
                 guard let validRateAppUrl = NSURL(string: self.rateAppUrl) else { break }
                 UIApplication.sharedApplication().openURL(validRateAppUrl)
+            case 1:
+                self.performSegueWithIdentifier("webViewSegue", sender: self)
             default:
                 break
             }
         }
+        else if case 1 = indexPath.section {
+            guard let validSocialLink = NSURL(string: self.links[indexPath.row]) else { return }
+            let safariController = SFSafariViewController(URL: validSocialLink)
+            self.presentViewController(safariController, animated: true, completion: nil)
+        }
+        
         self.tableView.deselectRowAtIndexPath(indexPath, animated: false)
     }
     
