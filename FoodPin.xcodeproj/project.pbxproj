@@ -25,6 +25,7 @@
 		65D112361C44C41D00F4A0C8 /* RestaurantData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D112351C44C41D00F4A0C8 /* RestaurantData.swift */; };
 		65D1123B1C44EEA300F4A0C8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 65D1123D1C44EEA300F4A0C8 /* Localizable.strings */; };
 		65D112421C44EEA600F4A0C8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 65D112441C44EEA600F4A0C8 /* InfoPlist.strings */; };
+		65D112481C44F74C00F4A0C8 /* aboutfoodpin.png in Resources */ = {isa = PBXBuildFile; fileRef = 65D1124A1C44F74C00F4A0C8 /* aboutfoodpin.png */; };
 		65D53FF61C410BA7000D5286 /* Discover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65D53FF41C410BA7000D5286 /* Discover.storyboard */; };
 		65E56DF31C3D1DA400AA4E42 /* WalkThroughPageContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E56DF21C3D1DA400AA4E42 /* WalkThroughPageContentViewController.swift */; };
 		65E56DF51C3D54A800AA4E42 /* WalkthroughPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E56DF41C3D54A800AA4E42 /* WalkthroughPageViewController.swift */; };
@@ -57,6 +58,8 @@
 		65D1123E1C44EEA400F4A0C8 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/Main.strings; sourceTree = "<group>"; };
 		65D1123F1C44EEA500F4A0C8 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		65D112431C44EEA600F4A0C8 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		65D112491C44F74C00F4A0C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Base; path = Base.lproj/aboutfoodpin.png; sourceTree = "<group>"; };
+		65D1124B1C44F79300F4A0C8 /* id */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = id; path = id.lproj/aboutfoodpin.png; sourceTree = "<group>"; };
 		65D53FF51C410BA7000D5286 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Discover.storyboard; sourceTree = "<group>"; };
 		65E56DF21C3D1DA400AA4E42 /* WalkThroughPageContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkThroughPageContentViewController.swift; sourceTree = "<group>"; };
 		65E56DF41C3D54A800AA4E42 /* WalkthroughPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkthroughPageViewController.swift; sourceTree = "<group>"; };
@@ -96,6 +99,7 @@
 		6592EC681C0F34BC00CF975D /* FoodPin */ = {
 			isa = PBXGroup;
 			children = (
+				65D112451C44F6D400F4A0C8 /* aboutImageLocalized */,
 				65D112441C44EEA600F4A0C8 /* InfoPlist.strings */,
 				65D1123D1C44EEA300F4A0C8 /* Localizable.strings */,
 				6592EC691C0F34BC00CF975D /* AppDelegate.swift */,
@@ -121,6 +125,14 @@
 				6555BDE81C2E825B0054FFC6 /* AddRestaurantTableViewController.swift */,
 			);
 			path = FoodPin;
+			sourceTree = "<group>";
+		};
+		65D112451C44F6D400F4A0C8 /* aboutImageLocalized */ = {
+			isa = PBXGroup;
+			children = (
+				65D1124A1C44F74C00F4A0C8 /* aboutfoodpin.png */,
+			);
+			name = aboutImageLocalized;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -171,6 +183,7 @@
 			knownRegions = (
 				en,
 				Base,
+				id,
 			);
 			mainGroup = 6592EC5D1C0F34BB00CF975D;
 			productRefGroup = 6592EC671C0F34BB00CF975D /* Products */;
@@ -192,6 +205,7 @@
 				65D1123B1C44EEA300F4A0C8 /* Localizable.strings in Resources */,
 				6592EC711C0F34BC00CF975D /* Assets.xcassets in Resources */,
 				65D53FF61C410BA7000D5286 /* Discover.storyboard in Resources */,
+				65D112481C44F74C00F4A0C8 /* aboutfoodpin.png in Resources */,
 				65D112301C44B80600F4A0C8 /* About.storyboard in Resources */,
 				6592EC6F1C0F34BC00CF975D /* Main.storyboard in Resources */,
 			);
@@ -266,6 +280,15 @@
 				65D112431C44EEA600F4A0C8 /* id */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		65D1124A1C44F74C00F4A0C8 /* aboutfoodpin.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				65D112491C44F74C00F4A0C8 /* Base */,
+				65D1124B1C44F79300F4A0C8 /* id */,
+			);
+			name = aboutfoodpin.png;
 			sourceTree = "<group>";
 		};
 		65D53FF41C410BA7000D5286 /* Discover.storyboard */ = {
