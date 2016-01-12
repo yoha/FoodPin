@@ -46,7 +46,7 @@
 		65C39C3A1C2AE5D8006C18CE /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		65C39C3C1C2AF0FE006C18CE /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		65C861201C0F383000710A2A /* RestaurantTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewController.swift; sourceTree = "<group>"; };
-		65D53FF21C410B50000D5286 /* About.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = About.storyboard; path = Base.lproj/About.storyboard; sourceTree = "<group>"; };
+		65D53FF21C410B50000D5286 /* About.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = About.storyboard; sourceTree = "<group>"; };
 		65D53FF51C410BA7000D5286 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Discover.storyboard; sourceTree = "<group>"; };
 		65E56DF21C3D1DA400AA4E42 /* WalkThroughPageContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkThroughPageContentViewController.swift; sourceTree = "<group>"; };
 		65E56DF41C3D54A800AA4E42 /* WalkthroughPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkthroughPageViewController.swift; sourceTree = "<group>"; };
@@ -88,11 +88,11 @@
 			children = (
 				6592EC691C0F34BC00CF975D /* AppDelegate.swift */,
 				65F5085B1C33D1CB00FA8EDB /* FoodPin.xcdatamodeld */,
-				65D53FF21C410B50000D5286 /* About.storyboard */,
 				6592EC6D1C0F34BC00CF975D /* Main.storyboard */,
 				65D53FF41C410BA7000D5286 /* Discover.storyboard */,
-				6592EC721C0F34BC00CF975D /* LaunchScreen.storyboard */,
+				65D53FF21C410B50000D5286 /* About.storyboard */,
 				6592EC701C0F34BC00CF975D /* Assets.xcassets */,
+				6592EC721C0F34BC00CF975D /* LaunchScreen.storyboard */,
 				6592EC751C0F34BC00CF975D /* Info.plist */,
 				65A9CFCE1C427D0100D5E8A9 /* AboutTableViewController.swift */,
 				65A9CFD01C4292E400D5E8A9 /* WebViewController.swift */,
