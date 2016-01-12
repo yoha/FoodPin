@@ -770,7 +770,7 @@
         <scene sceneID="NN3-Dd-ou1">
             <objects>
                 <viewControllerPlaceholder storyboardName="About" id="5vi-NY-IAL" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="p5Z-wq-Q4y"/>
+                    <tabBarItem key="tabBarItem" title="About" image="about" id="p5Z-wq-Q4y"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Weq-i6-IMG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -780,7 +780,7 @@
         <scene sceneID="Cbd-aW-TDw">
             <objects>
                 <viewControllerPlaceholder storyboardName="Discover" id="JiX-xm-HhA" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Zbf-ma-FrG"/>
+                    <tabBarItem key="tabBarItem" title="Discover" image="discover" id="Zbf-ma-FrG"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sfc-fG-JnK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -788,8 +788,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="about" width="25" height="25"/>
         <image name="barrafina" width="640" height="640"/>
         <image name="close" width="84" height="84"/>
+        <image name="discover" width="25" height="25"/>
         <image name="dislike" width="84" height="84"/>
         <image name="favorite" width="25" height="25"/>
         <image name="good" width="256" height="256"/>

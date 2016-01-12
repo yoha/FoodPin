@@ -1,0 +1,87 @@
+/* Has user been here Field */
+"Been here" = "Pernah Kesini";
+
+/* delete label for restaurant entry */
+"Delete" = "Hapus";
+
+/* heading title 2 */
+"Discover" = "Temukan";
+
+/* navigation button on the bottom right */
+"Done" = "Selesai";
+
+/* social media 1 */
+"Facebook" = "Facebook";
+
+/* subheading 2 */
+"Find restaurants pinned by your friends and other foodies around the world" = "Cari restoran yang pernah di pin oleh teman-temanmu dan penyuka makanan lain di seluruh dunia";
+
+/* section title 1 */
+"Follow Us" = "Ikuti Kami";
+
+/* prepended text to shared location */
+"Just checking in at " = "Barusan daftarkan diri di";
+
+/* section title 0 */
+"Leave Feedback" = "Tinggalkan Saran";
+
+/* heading title 1 */
+"Locate" = "Cari";
+
+/* Location/Address Field */
+"Location" = "Lokasi";
+
+/* response to user been to the restaurant */
+"NO" = "BELOM";
+
+/* Name Field */
+"Name" = "Nama";
+
+/* navigation button on the bottom right */
+"Next" = "Berikutnya";
+
+/* User has not been here before */
+"No" = "Belom";
+
+/* response to alert about empty field */
+"OK" = "OK";
+
+/* heading title 0 */
+"Personalize" = "Personalisasi";
+
+/* Phone Field */
+"Phone" = "Telefon";
+
+/* subheading 0 */
+"Pin your favorite restaurants and create your own food guide" = "Pin restoran kesukaanmu dan membuat panduan makananmu sendiri";
+
+/* social media 2 */
+"Pinterest" = "Pinterest";
+
+/* section content 0 */
+"Rate us on the App Store" = "Nilai kami di App Store";
+
+/* subheading 1 */
+"Search and locate your favorite restaurant on the map" = "Cari dan temukan restoran kesukaanmu di peta";
+
+/* share label for restaurant entry */
+"Share" = "Bagikan";
+
+/* section content 1 */
+"Tell us your feedback" = "Berikan saranmu";
+
+/* social media 0 */
+"Twitter" = "Twitter";
+
+/* Type Field */
+"Type" = "Tipe";
+
+/* alert about empty field */
+"We can't proceed because one of the fields is blank. Please note that all fields are required" = "Kita tidak bisa melanjutkan karena salah satu bidang kosong. Harap diperhatikan bahwa semua bidang diperlukan";
+
+/* response to user been to the restaurant */
+"YES" = "IYA";
+
+/* User has been here before */
+"Yes" = "Iya";
+

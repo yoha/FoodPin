@@ -1,0 +1,15 @@
+/* Class = "UINavigationItem"; title = "About"; ObjectID = "Ct1-Cw-lMy"; */
+"Ct1-Cw-lMy.title" = "Tentang";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "FbY-9w-Tdv"; */
+"FbY-9w-Tdv.text" = "";
+
+/* Class = "UITabBarItem"; title = "About"; ObjectID = "fUS-aF-J5r"; */
+"fUS-aF-J5r.title" = "Tentang";
+
+/* Class = "UITableViewController"; title = "About View Controller"; ObjectID = "msy-Nn-Gjj"; */
+"msy-Nn-Gjj.title" = "";
+
+/* Class = "UINavigationController"; title = "About Navigation Controller"; ObjectID = "yJM-pN-lxb"; */
+"yJM-pN-lxb.title" = "";
+

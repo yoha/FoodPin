@@ -1,0 +1,96 @@
+/* Class = "UIButton"; normalTitle = "NO"; ObjectID = "2FP-bf-zNS"; */
+"2FP-bf-zNS.normalTitle" = "Tidak";
+
+/* Class = "UINavigationItem"; title = "New Restaurant"; ObjectID = "2xv-Ok-16c"; */
+"2xv-Ok-16c.title" = "Restoran Baru";
+
+/* Class = "UIButton"; normalTitle = "YES"; ObjectID = "4ng-OL-FG4"; */
+"4ng-OL-FG4.normalTitle" = "Iya";
+
+/* Class = "UILabel"; text = "Pin your favorite restaurant and create your own food guide"; ObjectID = "8bg-9K-Iem"; */
+"8bg-9K-Iem.text" = "Pin restoran kesukaanmu dan membuat panduan makananmu sendiri";
+
+/* Class = "UILabel"; text = "HAVE YOU BEEN HERE ?"; ObjectID = "9dI-EO-GaX"; */
+"9dI-EO-GaX.text" = "SUDAH PERNAH MAKAN DISINI?";
+
+/* Class = "UITableViewController"; title = "New Restaurant View Controller"; ObjectID = "48x-TX-BA8"; */
+"48x-TX-BA8.title" = "";
+
+/* Class = "UITabBarItem"; title = "Favorite"; ObjectID = "Cx2-IN-M8C"; */
+"Cx2-IN-M8C.title" = "Kesukaan";
+
+/* Class = "UILabel"; text = "Field"; ObjectID = "ELP-WY-uqZ"; */
+"ELP-WY-uqZ.text" = "";
+
+/* Class = "UILabel"; text = "Type"; ObjectID = "Gkf-7W-evg"; */
+"Gkf-7W-evg.text" = "Tipe";
+
+/* Class = "UITableViewController"; title = "Food Pin View Controller"; ObjectID = "HTR-y4-VLE"; */
+"HTR-y4-VLE.title" = "";
+
+/* Class = "UITextField"; placeholder = "Restaurant Contact Number"; ObjectID = "IVP-DF-5kS"; */
+"IVP-DF-5kS.placeholder" = "Nomor Telpon Restoran";
+
+/* Class = "UINavigationController"; title = "New Restaurant Navigation Controller"; ObjectID = "IvX-t0-Gtf"; */
+"IvX-t0-Gtf.title" = "";
+
+/* Class = "UILabel"; text = "Location"; ObjectID = "NA4-V9-467"; */
+"NA4-V9-467.text" = "Lokasi";
+
+/* Class = "UITabBarController"; title = "Tab Bar Controller"; ObjectID = "Qcc-uA-zbQ"; */
+"Qcc-uA-zbQ.title" = "";
+
+/* Class = "UILabel"; text = "TYPE"; ObjectID = "SvC-kw-a3p"; */
+"SvC-kw-a3p.text" = "TIPE";
+
+/* Class = "UIButton"; normalTitle = "Next"; ObjectID = "WS9-bS-94i"; */
+"WS9-bS-94i.normalTitle" = "Berikutnya";
+
+/* Class = "UILabel"; text = "PHONE NUMBER"; ObjectID = "Xlc-Fy-STX"; */
+"Xlc-Fy-STX.text" = "NOMOR TELEFON";
+
+/* Class = "UITabBarItem"; title = "Discover"; ObjectID = "Zbf-ma-FrG"; */
+"Zbf-ma-FrG.title" = "Temukan";
+
+/* Class = "UINavigationItem"; title = "Food Pin"; ObjectID = "hRN-X1-eIb"; */
+"hRN-X1-eIb.title" = "";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "iBr-4o-Btb"; */
+"iBr-4o-Btb.normalTitle" = "";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "ien-Pb-PaD"; */
+"ien-Pb-PaD.text" = "Nama";
+
+/* Class = "UILabel"; text = "LOCATION"; ObjectID = "j7S-Py-kFq"; */
+"j7S-Py-kFq.text" = "LOKASI";
+
+/* Class = "UINavigationController"; title = "Super Navigation Controller"; ObjectID = "mub-ed-mVL"; */
+"mub-ed-mVL.title" = "";
+
+/* Class = "UITextField"; placeholder = "Restaurant Name"; ObjectID = "oaD-TF-pe8"; */
+"oaD-TF-pe8.placeholder" = "Nama Restoran";
+
+/* Class = "UITabBarItem"; title = "About"; ObjectID = "p5Z-wq-Q4y"; */
+"p5Z-wq-Q4y.title" = "Tentang";
+
+/* Class = "UILabel"; text = "Value"; ObjectID = "rhL-m5-ofk"; */
+"rhL-m5-ofk.text" = "";
+
+/* Class = "UIBarButtonItem"; title = "Help"; ObjectID = "tOl-Ub-Wbq"; */
+"tOl-Ub-Wbq.title" = "Bantuan";
+
+/* Class = "UILabel"; text = "Personalize"; ObjectID = "uQJ-aW-KBQ"; */
+"uQJ-aW-KBQ.text" = "Personalisasi";
+
+/* Class = "UITextField"; placeholder = "Restaurant Type"; ObjectID = "vuK-5d-WaL"; */
+"vuK-5d-WaL.placeholder" = "Tipe Restoran";
+
+/* Class = "UITextField"; placeholder = "Restaurant Location"; ObjectID = "xl2-h0-hRK"; */
+"xl2-h0-hRK.placeholder" = "Lokasi Restoran";
+
+/* Class = "UILabel"; text = "NAME"; ObjectID = "yHN-kx-KlA"; */
+"yHN-kx-KlA.text" = "NAMA";
+
+/* Class = "UILabel"; text = "How did you like it?"; ObjectID = "zoT-0r-YTC"; */
+"zoT-0r-YTC.text" = "Suka ngak?";
+

@@ -33,8 +33,8 @@ class AddRestaurantTableViewController: UITableViewController, UIImagePickerCont
             self.restaurantTypeTextField.text?.characters.count > 0 &&
             self.restaurantLocationTextField.text?.characters.count > 0 &&
             self.restaurantPhoneNumberTextField.text?.characters.count > 0 else {
-                let alertController = UIAlertController(title: "Oops", message: "We can't proceed because one of the fields is blank. Please note that all fields are required", preferredStyle: UIAlertControllerStyle.Alert)
-                alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+                let alertController = UIAlertController(title: "Oops", message: NSLocalizedString("We can't proceed because one of the fields is blank. Please note that all fields are required", comment: "alert about empty field"), preferredStyle: UIAlertControllerStyle.Alert)
+                alertController.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "response to alert about empty field"), style: .Default, handler: nil))
             
                 self.presentViewController(alertController, animated: true, completion: nil)
                 return
@@ -63,37 +63,20 @@ class AddRestaurantTableViewController: UITableViewController, UIImagePickerCont
     }
     
     @IBAction func toggleBeenHereButtonDidSelect(sender: UIButton) {
-        if sender.titleLabel?.text == "YES" {
+        if sender.titleLabel?.text == NSLocalizedString("YES", comment: "response to user been to the restaurant") {
             self.yesButton.alpha = 1.0
             self.yesButton.backgroundColor = UIColor.redColor()
             self.noButton.backgroundColor = UIColor.blackColor()
             self.noButton.alpha = 0.1
             self.isThisRestaurantVisited = true
         }
-        else if sender.titleLabel?.text == "NO" {
+        else if sender.titleLabel?.text == NSLocalizedString("NO", comment: "response to user been to the restaurant") {
             self.noButton.alpha = 1.0
             self.noButton.backgroundColor = UIColor.redColor()
             self.yesButton.backgroundColor = UIColor.blackColor()
             self.yesButton.alpha = 0.1
             self.isThisRestaurantVisited = false
         }
-    }
-    
-    // MARK: - UIViewController Methods
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     // MARK: - UIImagePickerControllerDelegate Methods
@@ -133,15 +116,4 @@ class AddRestaurantTableViewController: UITableViewController, UIImagePickerCont
         self.presentViewController(imagePicker, animated: true, completion: nil)
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

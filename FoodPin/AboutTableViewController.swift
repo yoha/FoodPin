@@ -13,8 +13,8 @@ class AboutTableViewController: UITableViewController {
     
     // MARK: - Stored Properties
     
-    let sectionTitles = ["Leave Feedback", "Follow US"]
-    let sectionContent = [["Rate us on App Store", "Tell us your feedback"], ["Twitter", "Facebook", "Pinterest"]]
+    let sectionTitles = [NSLocalizedString("Leave Feedback", comment: "section title 0"), NSLocalizedString("Follow Us", comment: "section title 1")]
+    let sectionContent = [[NSLocalizedString("Rate us on the App Store", comment: "section content 0"), NSLocalizedString("Tell us your feedback", comment: "section content 1")], [NSLocalizedString("Twitter", comment: "social media 0"), NSLocalizedString("Facebook", comment: "social media 1"), NSLocalizedString("Pinterest", comment: "social media 2")]]
     let links = ["https://twitter.com/appcodamobile", "https://facebook.com/appcodamobile", "https://pinterest.com/appcoda/"]
     let rateAppUrl = "http://apple.com/itunes/charts/paid-apps/"
 

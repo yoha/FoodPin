@@ -12,12 +12,12 @@ class WalkthroughPageViewController: UIPageViewController, UIPageViewControllerD
 
     // MARK: - Stored Properties
     
-    let pageHeadings = ["Personalize", "Locate", "Discover"]
+    let pageHeadings = [NSLocalizedString("Personalize", comment: "heading title 0"), NSLocalizedString("Locate", comment: "heading title 1"), NSLocalizedString("Discover", comment: "heading title 2")]
     let pageImages = ["foodpin-intro-1", "foodpin-intro-2", "foodpin-intro-3"]
     let pageContent = [
-        "Pin your favorite restaurants and create your own food guide",
-        "Search and locate your favorite restaurant on the map",
-        "Find restaurants pinned by your friends and other foodies around the world"
+        NSLocalizedString("Pin your favorite restaurants and create your own food guide", comment: "subheading 0"),
+        NSLocalizedString("Search and locate your favorite restaurant on the map", comment: "subheading 1"),
+        NSLocalizedString("Find restaurants pinned by your friends and other foodies around the world", comment: "subheading 2")
     ]
     
     // MARK: - UIPageViewControllerDataSource Methods
@@ -46,6 +46,7 @@ class WalkthroughPageViewController: UIPageViewController, UIPageViewControllerD
         }
         else { return 0 }
     }
+
     ***/
     
     // MARK: - UIViewController Methods

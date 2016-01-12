@@ -13,40 +13,6 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
     
     // MARK: - Stored Properties
     
-    /***
-    var restaurants:[RestaurantModel] = [
-        RestaurantModel(name: "Cafe Deadend", type: "Coffee & Tea Shop", location: "G/F, 72 Po Hing Fong, Sheung Wan, Hong Kong", phoneNumber: "232-923423", image: "cafedeadend.jpg"),
-        RestaurantModel(name: "Homei", type: "Cafe", location: "Shop B, G/F, 22-24A Tai Ping San Street SOHO, Sheung Wan, Hong Kong", phoneNumber: "348-233423", image: "homei.jpg"),
-        RestaurantModel(name: "Teakha", type: "Tea House", location: "Shop B, 18 Tai Ping Shan Road SOHO, Sheung Wan, Hong Kong", phoneNumber: "354-243523", image: "teakha.jpg"),
-        RestaurantModel(name: "Cafe loisl", type: "Austrian / Casual Drink", location: "Shop B, 20 Tai Ping Shan Road SOHO, Sheung Wan, Hong Kong", phoneNumber: "453-333423", image: "cafeloisl.jpg"),
-        RestaurantModel(name: "Petite Oyster", type: "French", location: "24 Tai Ping Shan Road SOHO, Sheung Wan, Hong Kong", phoneNumber: "983-284334", image: "petiteoyster.jpg"),
-        RestaurantModel(name: "For Kee Restaurant", type: "Bakery", location: "Shop J-K., 200 Hollywood Road, SOHO, Sheung Wan, Hong Kong", phoneNumber: "232-434222", image: "forkeerestaurant.jpg"),
-        RestaurantModel(name: "Po's Atelier", type: "Bakery", location: "G/F, 62 Po Hing Fong, Sheung Wan, Hong Kong", phoneNumber: "234-834322", image:"posatelier.jpg"),
-        RestaurantModel(name: "Bourke Street Backery", type: "Chocolate", location: "633 Bourke St Sydney New South Wales 2010 Surry Hills", phoneNumber: "982-434343", image: "bourkestreetbakery.jpg"),
-        RestaurantModel(name: "Haigh's Chocolate", type: "Cafe", location: "412-414 George St Sydney New South Wales", phoneNumber: "734-232323", image:
-        "haighschocolate.jpg"),
-        RestaurantModel(name: "Palomino Espresso", type: "American / Seafood", location: "Shop 1 61 York St Sydney New South Wales", phoneNumber: "872-734343", image: "palominoespresso.jpg"),
-        RestaurantModel(name: "Upstate", type: "American", location: "95 1st Ave New York, NY 10003", phoneNumber: "343-233221", image: "upstate.jpg"),
-        RestaurantModel(name: "Traif", type: "American", location: "229 S 4th St Brooklyn, NY 11211", phoneNumber: "985-723623", image: "traif.jpg"),
-        RestaurantModel(name: "Graham Avenue Meats", type: "Breakfast & Brunch", location: "445 Graham Ave Brooklyn, NY 11211", phoneNumber: "455-232345",
-            image: "grahamavenuemeats.jpg"),
-        RestaurantModel(name: "Waffle & Wolf", type: "Coffee & Tea", location: "413 Graham Ave Brooklyn, NY 11211", phoneNumber: "434-232322", image:
-            "wafflewolf.jpg"),
-        RestaurantModel(name: "Five Leaves", type: "Coffee & Tea", location: "18 Bedford Ave Brooklyn, NY 11222", phoneNumber: "343-234553", image: "fiveleaves.jpg"),
-        RestaurantModel(name: "Cafe Lore", type: "Latin American", location: "Sunset Park 4601 4th Ave Brooklyn, NY 11220", phoneNumber: "342-455433", image:
-            "cafelore.jpg"),
-        RestaurantModel(name: "Confessional", type: "Spanish", location: "308 E 6th St New York, NY 10003", phoneNumber: "643-332323", image: "confessional.jpg"),
-        RestaurantModel(name: "Barrafina", type: "Spanish", location: "54 Frith Street London W1D 4SL United Kingdom", phoneNumber: "542-343434", image:
-            "barrafina.jpg"),
-        RestaurantModel(name: "Donostia", type: "Spanish", location: "10 Seymour Place London W1H 7ND United Kingdom", phoneNumber: "722-232323", image:
-            "donostia.jpg"),
-        RestaurantModel(name: "Royal Oak", type: "British", location: "2 Regency Street London SW1P 4BZ United Kingdom", phoneNumber: "343-988834", image:
-            "royaloak.jpg"),
-        RestaurantModel(name: "Thai Cafe", type: "Thai", location: "22 Charlwood Street London SW1V 2DY Pimlico", phoneNumber: "432-344050", image: "thaicafe.jpg")
-    ]
-    ***/
-    
-    
     var restaurants = [RestaurantModel]()
     
     var fetchResultController: NSFetchedResultsController!
@@ -128,7 +94,7 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
         self.searchController.obscuresBackgroundDuringPresentation = false
         self.tableView.tableHeaderView = self.searchController.searchBar
         
-        // Fetch data from persistent storage using Core Data [more efficient way; only load and display the change]
+        // Fetch data from persistent storage using Core Data option 1: [more efficient way; only load and display the change]
         let fetchRequest = NSFetchRequest(entityName: "RestaurantModel")
         let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
@@ -166,7 +132,8 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
         
         self.navigationController?.hidesBarsOnSwipe = true
         
-        /*** Fetch data from persistent storage using Core Data [less efficient way since all restaurants are reloaded & redisplayed every time]
+        /*** Fetch data from persistent storage using Core Data option 0: [less efficient way since all restaurants are reloaded & redisplayed every time]
+        
         guard let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext else { return }
         let fetchRequest = NSFetchRequest(entityName: "RestaurantModel")
         do {
@@ -177,6 +144,7 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
             print(error)
             return
         }
+        
         ***/
     }
     
@@ -191,47 +159,51 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
     
     // MARK: - UITableViewDelegate    Methods
     
-//    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        let optionMenu = UIAlertController(title: nil, message: "What do you want to do?", preferredStyle: UIAlertControllerStyle.ActionSheet)
-//        
-//        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
-//        optionMenu.addAction(cancelAction)
-//        
-//        let callAction = UIAlertAction(title: "Call 123-000-\(indexPath.row)", style: .Default) { [unowned self] (action: UIAlertAction) -> Void in
-//            let alertMessage = UIAlertController(title: "Service Unavailable", message: "Sorry, the call feature is not available yet. Please retry later.", preferredStyle: .Alert)
-//            alertMessage.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-//            self.presentViewController(alertMessage, animated: true, completion: nil)
-//        }
-//        optionMenu.addAction(callAction)
-//        
-//        if self.restaurantsVisited[indexPath.row] {
-//            let hasNotVisitedBeforeAction = UIAlertAction(title: "I've not been here", style: .Default, handler: { (action: UIAlertAction) -> Void in
-//                guard let cell = self.tableView.cellForRowAtIndexPath(indexPath) else { return }
-//                cell.accessoryType = UITableViewCellAccessoryType.None
-//                self.restaurants[indexPath.row].isVisited = false
-//                self.restaurantsVisited[indexPath.row] = false
-//            })
-//            optionMenu.addAction(hasNotVisitedBeforeAction)
-//        }
-//        else {
-//            let hasVisitedBeforeAction = UIAlertAction(title: "I've been here", style: .Default) { [unowned self] (action: UIAlertAction) -> Void in
-//                guard let cell = self.tableView.cellForRowAtIndexPath(indexPath) else { return }
-//                cell.accessoryType = UITableViewCellAccessoryType.Checkmark
-//                self.restaurants[indexPAth.row].isVisited = true
-//            }
-//            optionMenu.addAction(hasVisitedBeforeAction)
-//        }
-//        
-//        self.presentViewController(optionMenu, animated: true, completion: nil)
-//        
-//        self.tableView.deselectRowAtIndexPath(indexPath, animated: false)
-//    }
+    /***
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let optionMenu = UIAlertController(title: nil, message: "What do you want to do?", preferredStyle: UIAlertControllerStyle.ActionSheet)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        optionMenu.addAction(cancelAction)
+        
+        let callAction = UIAlertAction(title: "Call 123-000-\(indexPath.row)", style: .Default) { [unowned self] (action: UIAlertAction) -> Void in
+            let alertMessage = UIAlertController(title: "Service Unavailable", message: "Sorry, the call feature is not available yet. Please retry later.", preferredStyle: .Alert)
+            alertMessage.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+            self.presentViewController(alertMessage, animated: true, completion: nil)
+        }
+        optionMenu.addAction(callAction)
+        
+        if self.restaurantsVisited[indexPath.row] {
+            let hasNotVisitedBeforeAction = UIAlertAction(title: "I've not been here", style: .Default, handler: { (action: UIAlertAction) -> Void in
+                guard let cell = self.tableView.cellForRowAtIndexPath(indexPath) else { return }
+                cell.accessoryType = UITableViewCellAccessoryType.None
+                self.restaurants[indexPath.row].isVisited = false
+                self.restaurantsVisited[indexPath.row] = false
+            })
+            optionMenu.addAction(hasNotVisitedBeforeAction)
+        }
+        else {
+            let hasVisitedBeforeAction = UIAlertAction(title: "I've been here", style: .Default) { [unowned self] (action: UIAlertAction) -> Void in
+                guard let cell = self.tableView.cellForRowAtIndexPath(indexPath) else { return }
+                cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+                self.restaurants[indexPAth.row].isVisited = true
+            }
+            optionMenu.addAction(hasVisitedBeforeAction)
+        }
+        
+        self.presentViewController(optionMenu, animated: true, completion: nil)
+        
+        self.tableView.deselectRowAtIndexPath(indexPath, animated: false)
+    }
+    
+    ***/
     
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         
         // Social Sharing Button
-        let shareAction = UITableViewRowAction(style: .Default, title: "Share") { (tableViewRowAction, indexPath) -> Void in
-            let defaultText = "Just checking in at " + self.restaurants[indexPath.row].name
+        let shareAction = UITableViewRowAction(style: .Default, title: NSLocalizedString("Share", comment: "share label for restaurant entry")) { (tableViewRowAction, indexPath) -> Void in
+            let defaultText = NSLocalizedString("Just checking in at ", comment: "prepended text to shared location") + self.restaurants[indexPath.row].name
             guard let validImageData = self.restaurants[indexPath.row].image else { return }
             guard let imageToShare = UIImage(data: validImageData) else { return }
             let activityController = UIActivityViewController(activityItems: [defaultText, imageToShare], applicationActivities: nil)
@@ -239,7 +211,7 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
         }
         
         // Delete data in db and in table view using core data
-        let deleteAction = UITableViewRowAction(style: .Default, title: "Delete") { (tableViewRowAction, indexPath) -> Void in
+        let deleteAction = UITableViewRowAction(style: .Default, title: NSLocalizedString("Delete", comment: "delete label for restaurant entry")) { (tableViewRowAction, indexPath) -> Void in
             guard let managedObjectContext = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext else { return }
             guard let restaurantToDelete = self.fetchResultController.objectAtIndexPath(indexPath) as? RestaurantModel else { return }
             managedObjectContext.deleteObject(restaurantToDelete)

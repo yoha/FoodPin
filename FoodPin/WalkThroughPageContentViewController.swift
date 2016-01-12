@@ -21,7 +21,7 @@ class WalkThroughPageContentViewController: UIViewController {
     // MARK: - IBAction Properties
     
     @IBAction func forwardButtonDidTouch(sender: UIButton) {
-        if sender.titleLabel?.text == "Done" {
+        if sender.titleLabel?.text == NSLocalizedString("Done", comment: "navigation button on the bottom right") {
             self.dismissViewControllerAnimated(true, completion: nil)
             NSUserDefaults.standardUserDefaults().setBool(true, forKey: "userHasViewedWalkthrough")
         }
@@ -52,10 +52,10 @@ class WalkThroughPageContentViewController: UIViewController {
         
         self.forwardButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         if case 2 = self.currentPageIndex {
-            self.forwardButton.setTitle("Done", forState: .Normal)
+            self.forwardButton.setTitle(NSLocalizedString("Done", comment: "navigation button on the bottom right"), forState: .Normal)
         }
         else {
-            self.forwardButton.setTitle("Next", forState: .Normal)
+            self.forwardButton.setTitle(NSLocalizedString("Next", comment: "navigation button on the bottom right"), forState: .Normal)
         }
     }
 }
