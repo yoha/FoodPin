@@ -24,11 +24,4 @@ class RestaurantTableViewCell: UITableViewCell {
         self.thumbnailImageView.layer.cornerRadius = 30.0
         self.thumbnailImageView.clipsToBounds = true
     }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }

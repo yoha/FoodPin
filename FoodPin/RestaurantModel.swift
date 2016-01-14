@@ -19,14 +19,4 @@ class RestaurantModel: NSManagedObject {
     @NSManaged var isVisited: NSNumber?
     @NSManaged var rating: String?
     
-//    init (name: String, type: String, location: String, phoneNumber: String, image: NSData, isVisited: Bool = false) {
-//        
-//        self.name = name
-//        self.type = type
-//        self.location = location
-//        self.phoneNumber = phoneNumber
-//        self.image = image
-//        self.isVisited = isVisited
-//        self.rating = "rating"
-//    }
 }

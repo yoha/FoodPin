@@ -91,7 +91,11 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
         
         self.searchController = UISearchController(searchResultsController: nil)
         self.searchController.searchResultsUpdater = self
-        self.searchController.obscuresBackgroundDuringPresentation = false
+        if #available(iOS 9.1, *) {
+            self.searchController.obscuresBackgroundDuringPresentation = false
+        } else {
+            // Fallback on earlier versions
+        }
         self.tableView.tableHeaderView = self.searchController.searchBar
         
         // Fetch data from persistent storage using Core Data option 1: [more efficient way; only load and display the change]
@@ -157,47 +161,7 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
         }
     }
     
-    // MARK: - UITableViewDelegate    Methods
-    
-    /***
-    
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let optionMenu = UIAlertController(title: nil, message: "What do you want to do?", preferredStyle: UIAlertControllerStyle.ActionSheet)
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
-        optionMenu.addAction(cancelAction)
-        
-        let callAction = UIAlertAction(title: "Call 123-000-\(indexPath.row)", style: .Default) { [unowned self] (action: UIAlertAction) -> Void in
-            let alertMessage = UIAlertController(title: "Service Unavailable", message: "Sorry, the call feature is not available yet. Please retry later.", preferredStyle: .Alert)
-            alertMessage.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-            self.presentViewController(alertMessage, animated: true, completion: nil)
-        }
-        optionMenu.addAction(callAction)
-        
-        if self.restaurantsVisited[indexPath.row] {
-            let hasNotVisitedBeforeAction = UIAlertAction(title: "I've not been here", style: .Default, handler: { (action: UIAlertAction) -> Void in
-                guard let cell = self.tableView.cellForRowAtIndexPath(indexPath) else { return }
-                cell.accessoryType = UITableViewCellAccessoryType.None
-                self.restaurants[indexPath.row].isVisited = false
-                self.restaurantsVisited[indexPath.row] = false
-            })
-            optionMenu.addAction(hasNotVisitedBeforeAction)
-        }
-        else {
-            let hasVisitedBeforeAction = UIAlertAction(title: "I've been here", style: .Default) { [unowned self] (action: UIAlertAction) -> Void in
-                guard let cell = self.tableView.cellForRowAtIndexPath(indexPath) else { return }
-                cell.accessoryType = UITableViewCellAccessoryType.Checkmark
-                self.restaurants[indexPAth.row].isVisited = true
-            }
-            optionMenu.addAction(hasVisitedBeforeAction)
-        }
-        
-        self.presentViewController(optionMenu, animated: true, completion: nil)
-        
-        self.tableView.deselectRowAtIndexPath(indexPath, animated: false)
-    }
-    
-    ***/
+    // MARK: - UITableViewDelegate Methods
     
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         
@@ -267,40 +231,4 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
         }
         self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
     }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
 }
