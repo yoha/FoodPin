@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class AddRestaurantTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class AddRestaurantTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
     // MARK: - Stored Properties
     
@@ -115,5 +115,84 @@ class AddRestaurantTableViewController: UITableViewController, UIImagePickerCont
         
         self.presentViewController(imagePicker, animated: true, completion: nil)
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
+    // MARK: - UITextFieldDelegate Methods
+    
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        let spacingBetweenBarButtonItems = UIBarButtonItem(barButtonSystemItem: .FixedSpace, target: nil, action: nil)
+        spacingBetweenBarButtonItems.width = 20.0
+
+        let keyboardToolbar = UIToolbar(frame: CGRect(x: 0.0, y: 0.0, width: self.view.bounds.width, height: 44))
+        keyboardToolbar.barStyle = .Default
+        keyboardToolbar.setItems([
+            UIBarButtonItem(title: "<", style: UIBarButtonItemStyle.Plain, target: self, action: "goToPreviousTextField"),
+            spacingBetweenBarButtonItems,
+            UIBarButtonItem(title: ">", style: .Plain, target: self, action: "goToNextTextField"),
+            UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil),
+            UIBarButtonItem(title: "Done", style: .Plain, target: self, action: "resignKeyboard")
+        ], animated: true)
+        
+        textField.inputAccessoryView = keyboardToolbar
+        
+        return true
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
+    }
+    
+    // MARK: - UIViewController Methods
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.restaurantNameTextField.delegate = self
+        self.restaurantTypeTextField.delegate = self
+        self.restaurantLocationTextField.delegate = self
+        self.restaurantPhoneNumberTextField.delegate = self
+    }
+    
+    // MARK: - Helper Methods
+    
+    func goToNextTextField() {
+        if self.restaurantNameTextField.isFirstResponder() {
+            self.restaurantNameTextField.resignFirstResponder()
+            self.restaurantTypeTextField.becomeFirstResponder()
+        }
+        else if self.restaurantTypeTextField.isFirstResponder() {
+            self.restaurantTypeTextField.resignFirstResponder()
+            self.restaurantLocationTextField.becomeFirstResponder()
+        }
+        else if self.restaurantLocationTextField.isFirstResponder() {
+            self.restaurantLocationTextField.resignFirstResponder()
+            self.restaurantPhoneNumberTextField.becomeFirstResponder()
+        }
+        else if self.restaurantPhoneNumberTextField.isFirstResponder() {
+            return
+        }
+    }
+    
+    func goToPreviousTextField() {
+        if self.restaurantPhoneNumberTextField.isFirstResponder() {
+           self.restaurantPhoneNumberTextField.resignFirstResponder()
+            self.restaurantLocationTextField.becomeFirstResponder()
+        }
+        else if self.restaurantLocationTextField.isFirstResponder() {
+            self.restaurantLocationTextField.resignFirstResponder()
+            self.restaurantTypeTextField.becomeFirstResponder()
+        }
+        else if self.restaurantTypeTextField.isFirstResponder() {
+            self.restaurantTypeTextField.resignFirstResponder()
+            self.restaurantNameTextField.becomeFirstResponder()
+        }
+        else if self.restaurantNameTextField.isFirstResponder() {
+            return
+        }
+    }
+    
+    func resignKeyboard() {
+        self.view.endEditing(true)
     }
 }
