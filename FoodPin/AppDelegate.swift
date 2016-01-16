@@ -13,6 +13,17 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    enum QuickActionShortcuts: String {
+        case ShowFavorites = "ShowFavorites"
+        case ShowDiscoveries = "ShowDiscoveries"
+        case CreateNew = "CreateNew"
+    }
+    
+    convenience init?(fullIdentifer: String) {
+        guard let shortcutIdentifier = fullIdentifer.componentsSeparatedByString(".").last else { return nil }
+        self.init(fullIdentifer: shortcutIdentifier)
+    }
 
 
     // MARK: - UIApplicationDelegate Methods
@@ -30,6 +41,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         return true
+    }
+    
+    func application(application: UIApplication, performActionForShortcutItem shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void) {
+        completionHandler(handleQuickAction(shortcutItem))
     }
 
     func applicationWillResignActive(application: UIApplication) {
@@ -115,6 +130,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 abort()
             }
         }
+    }
+    
+    // MARK: - QuickAction Method
+    
+    private func handleQuickAction(shortcutItem: UIApplicationShortcutItem) -> Bool {
+        let shortcutType = shortcutItem.type
+        guard let shortcutIdentifier = QuickActionShortcuts(rawValue: shortcutType) else { return false }
+        guard let tabBarController = self.window?.rootViewController as? UITabBarController else { return false }
+        
+        if case QuickActionShortcuts.ShowFavorites = shortcutIdentifier {
+            tabBarController.selectedIndex = 0
+        }
+        else if case QuickActionShortcuts.ShowDiscoveries = shortcutIdentifier {
+            tabBarController.selectedIndex = 1
+        }
+        else if case QuickActionShortcuts.CreateNew = shortcutIdentifier {
+            guard let navigationController = tabBarController.viewControllers?.first else { return false }
+            guard let restaurantTableViewcontroller = navigationController.childViewControllers.first as? RestaurantTableViewController else { return false }
+            restaurantTableViewcontroller.shouldPerformSegueWithIdentifier("addRestaurant", sender: restaurantTableViewcontroller)
+        }
+        return true
     }
 }
 

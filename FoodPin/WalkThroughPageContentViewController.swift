@@ -23,7 +23,24 @@ class WalkThroughPageContentViewController: UIViewController {
     @IBAction func forwardButtonDidTouch(sender: UIButton) {
         if sender.titleLabel?.text == NSLocalizedString("Done", comment: "navigation button on the bottom right") {
             self.dismissViewControllerAnimated(true, completion: nil)
+            
             NSUserDefaults.standardUserDefaults().setBool(true, forKey: "userHasViewedWalkthrough")
+            
+            // Add quick actions (3D Touch)
+            
+            guard self.traitCollection.forceTouchCapability == UIForceTouchCapability.Available else { return }
+            guard let bundleID = NSBundle.mainBundle().bundleIdentifier else { return }
+
+            var applicationIconType: UIApplicationShortcutIconType?
+            if #available(iOS 9.1, *) {
+                applicationIconType = UIApplicationShortcutIconType.Favorite
+            } else {
+                applicationIconType = nil
+            }
+            let quickApplicationShortcut0 = UIApplicationShortcutItem(type: "\(bundleID).ShowFavorites", localizedTitle: "Show Favorites", localizedSubtitle: nil, icon: UIApplicationShortcutIcon(type: applicationIconType!), userInfo: nil)
+            let quickApplicationShortcut1 = UIApplicationShortcutItem(type: "\(bundleID).ShowDiscoveries", localizedTitle: "Discover Restaurants", localizedSubtitle: nil, icon: UIApplicationShortcutIcon(type: .Search), userInfo: nil)
+            let quickApplicationShortcut2 = UIApplicationShortcutItem(type: "\(bundleID).CreateNew", localizedTitle: "˙New Restaurant", localizedSubtitle: nil, icon: UIApplicationShortcutIcon(type: .Add), userInfo: nil)
+            UIApplication.sharedApplication().shortcutItems  = [quickApplicationShortcut0, quickApplicationShortcut1, quickApplicationShortcut2]
         }
         else if case 0...1 = self.currentPageIndex {
             guard let pageViewController = self.parentViewController as? WalkthroughPageViewController else { return }

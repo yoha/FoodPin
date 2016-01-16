@@ -59,7 +59,7 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
         self.navigationController?.hidesBarsOnSwipe = false
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         
-        self.title = self.restaurant.name
+        self.navigationItem.title = self.restaurant.name
         
         guard let validRating = self.restaurant.rating where validRating != "" else { return }
         self.ratingButton.setImage(UIImage(named: validRating), forState: UIControlState.Normal)
