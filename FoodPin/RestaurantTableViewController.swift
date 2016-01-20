@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class RestaurantTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, UISearchResultsUpdating {
+class RestaurantTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, UISearchResultsUpdating, UIViewControllerPreviewingDelegate {
     
     // MARK: - Stored Properties
     
@@ -98,6 +98,10 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
         }
         self.tableView.tableHeaderView = self.searchController.searchBar
         
+        if self.traitCollection.forceTouchCapability == UIForceTouchCapability.Available {
+            self.registerForPreviewingWithDelegate(self, sourceView: self.view)
+        }
+        
         // Fetch data from persistent storage using Core Data option 1: [more efficient way; only load and display the change]
         let fetchRequest = NSFetchRequest(entityName: "RestaurantModel")
         let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
@@ -159,6 +163,26 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
             destinationViewController.restaurant = self.searchController.active ? self.searchResults[indexPath.row] : self.restaurants[indexPath.row]
             destinationViewController.hidesBottomBarWhenPushed = true
         }
+    }
+    
+    // MARK: - UIViewControllerPreviewingDelegate Methods
+    
+    func previewingContext(previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        guard let validIndexPath = self.tableView.indexPathForRowAtPoint(location) else { return nil }
+        guard let validCell = self.tableView.cellForRowAtIndexPath(validIndexPath) else { return nil }
+        guard let restaurantDetailViewController = self.storyboard?.instantiateViewControllerWithIdentifier("RestaurantDetailViewController") as? RestaurantDetailViewController else { return nil }
+        
+        let selectedRestaurant = self.restaurants[validIndexPath.row]
+        restaurantDetailViewController.restaurant = selectedRestaurant
+        restaurantDetailViewController.preferredContentSize = CGSize(width: 0.0, height: 450.0)
+        
+        previewingContext.sourceRect = validCell.frame
+        
+        return restaurantDetailViewController
+    }
+    
+    func previewingContext(previewingContext: UIViewControllerPreviewing, commitViewController viewControllerToCommit: UIViewController) {
+        self.showViewController(viewControllerToCommit, sender: self)
     }
     
     // MARK: - UITableViewDelegate Methods

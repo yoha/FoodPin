@@ -18,14 +18,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         case ShowFavorites = "ShowFavorites"
         case ShowDiscoveries = "ShowDiscoveries"
         case CreateNew = "CreateNew"
+        
+        init?(fullIdentifer: String) {
+            guard let shortcutIdentifier = fullIdentifer.componentsSeparatedByString(".").last else { return nil }
+            self.init(rawValue: shortcutIdentifier)
+        }
     }
     
-    convenience init?(fullIdentifer: String) {
-        guard let shortcutIdentifier = fullIdentifer.componentsSeparatedByString(".").last else { return nil }
-        self.init(fullIdentifer: shortcutIdentifier)
-    }
-
-
     // MARK: - UIApplicationDelegate Methods
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {

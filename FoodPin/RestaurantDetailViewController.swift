@@ -6,6 +6,8 @@
 //  Copyright © 2015 Yohannes Wijaya. All rights reserved.
 //
 
+// TODO: Add the ability to edit exising restaurant entry
+
 import UIKit
 
 class RestaurantDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {

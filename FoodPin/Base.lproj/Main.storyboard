@@ -116,7 +116,7 @@
         <!--Restaurant Detail View Controller-->
         <scene sceneID="WOG-vt-Xx0">
             <objects>
-                <viewController id="JZL-fS-0p4" customClass="RestaurantDetailViewController" customModule="FoodPin" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RestaurantDetailViewController" id="JZL-fS-0p4" customClass="RestaurantDetailViewController" customModule="FoodPin" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KiK-Dr-Uh9"/>
                         <viewControllerLayoutGuide type="bottom" id="xXI-UA-w75"/>
