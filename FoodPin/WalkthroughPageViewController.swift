@@ -24,13 +24,13 @@ class WalkthroughPageViewController: UIPageViewController, UIPageViewControllerD
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
         guard var pageIndex = (viewController as? WalkThroughPageContentViewController)?.currentPageIndex else { return nil }
-        --pageIndex
+        pageIndex -= 1
         return self.createPageContentViewControllerOnDemandAtIndex(pageIndex)
     }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
         guard var pageIndex = (viewController as? WalkThroughPageContentViewController)?.currentPageIndex else { return nil }
-        ++pageIndex
+        pageIndex += 1
         return self.createPageContentViewControllerOnDemandAtIndex(pageIndex)
     }
     
